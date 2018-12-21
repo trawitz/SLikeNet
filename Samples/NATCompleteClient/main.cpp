@@ -44,7 +44,7 @@ using namespace SLNet;
 #define DEFAULT_RAKPEER_PORT 50000
 #define RAKPEER_PORT_STR "0"
 #define DEFAULT_SERVER_PORT "61111"
-#define DEFAULT_SERVER_ADDRESS "natpunch.jenkinssoftware.com"
+#define DEFAULT_SERVER_ADDRESS "slikesoft.com"
 
 enum SampleResult
 {

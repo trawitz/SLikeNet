@@ -1832,6 +1832,27 @@ overview of all the samples:
 
 5.26 NATCompleteServer
    Description: Server to demonstrates all NAT components in a sample project.
+   Notes:
+   Syntax: NATCompleteServer [<port>] [<firstIPAddress>] [<secondIPAddress>]
+   The server starts up in either single IP address mode or dual IP address
+   mode (if at least two IP addresses are specified/detected).
+   In dual IP address mode the NAT punchthrough server supports stride
+   detection which improves its success rate. In that mode, the second IP
+   address uses the specified port increased by 1 (i.e. 61112 by default).
+   If no port is specified, the sample uses the default port (61111).
+   If no IP address is specified, the server picks the first and second (if
+   available) detected local IP address.
+   If an IP address is explicitly specified in the command line, that address
+   is being used. To enforce single IP address mode on a server with multiple
+   IP addresses, explicitly specify only the first IP address and no second
+   address.
+   The server returns an error code upon a startup failure or 0 if terminated
+   normally.
+   The following error codes are returned:
+   0 = success/normal termination
+   1 = startup error or no NAT related features supported
+   2 = invalid specified port
+   3 = failed to determine local IP address
 
 5.27 PacketLogger
    Description: Shows how to use the PacketLogger plugin(s).

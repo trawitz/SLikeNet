@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2017, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2017-2018, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -62,7 +62,7 @@ extern PlayerReplica *playerReplica; // Network object that represents the playe
 
 // A NAT punchthrough and proxy server Jenkins Software is hosting for free, should usually be online
 #define DEFAULT_NAT_PUNCHTHROUGH_FACILITATOR_PORT 61111
-#define DEFAULT_NAT_PUNCHTHROUGH_FACILITATOR_IP "natpunch.jenkinssoftware.com"
+#define DEFAULT_NAT_PUNCHTHROUGH_FACILITATOR_IP "slikesoft.com"
 
 void InstantiateRakNetClasses(void);
 void DeinitializeRakNetClasses(void);

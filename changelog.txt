@@ -18,13 +18,14 @@ version 0.2.0 (xx-xx-xxxx xx:xx UTC)
 General:
   * extended supported compilers to VS 2017 15.4.1 (#163)
   * several smaller changes, fixes, and code cleanup (#130, #136, #181 - SLNET_28/SLNET_30, #236, #238)
-  * documentation updates (#130, #160)
+  * documentation updates (#130, #160, #257)
   * updated changelog entries related to security issues in previous versions (#130)
 Core:
   FullyConnectedMesh2:
     * fixed incorrect delete in FullyConnectedMesh2::Clear() when using a custom allocator (#249)
   RakNetSocket2:
     * revised RakNetSocket2::GetMyIP() to determine own IPs more reliably (f.e. on OSX) (#217 - SLNET_36)
+    * fixed failure in RNS2_Berkley::BindSharedIPV4() always reporting an "unknown" error on OSX (#258)
   RakPeer:
     * improve handling of disconnecting peers (#123 - SLNET_16)
   RakWString:
@@ -44,7 +45,12 @@ Extensions:
     + added prebuilt C# bindings and integrated C# wrappers in prebuild DLLs (#157)
 Samples:
   General:
+    * use the free SLikeSoft NAT punchthrough service as a default throughout the samples (#173)
     * add validation for user provided port numbers/number of connections throughout applicable samples (#145)
+  NAT Punchthrough:
+    * allow specifying the IP address(es) to be used via the command line (#257)
+    * report the actual used IP address(es) and whether single or dual IP address mode is running (#257)
+    * improve error reporting in case of startup issues (#257)
 3rd Part Libraries:
   OpenSSL:
     * updated bundled version to 1.0.0t (#3)

@@ -29,7 +29,7 @@ namespace SLNet
 				// #high - add Linux/OSX handling
 				// allocate and encrypt buffer
 				size_t padding = maxBufferSize % CRYPTPROTECTMEMORY_BLOCK_SIZE;
-				m_EncryptedBufferSize = maxBufferSize + padding;
+				m_EncryptedBufferSize = maxBufferSize - padding + (padding > 0 ? CRYPTPROTECTMEMORY_BLOCK_SIZE : 0);
 				if (m_EncryptedBufferSize > std::numeric_limits<DWORD>::max()) {
 					// #high - exception/error logging
 					m_EncryptedBufferSize = std::numeric_limits<DWORD>::max();

@@ -62,7 +62,7 @@ int main(void)
 		printf("Enter remote IP: ");
 		Gets(text,BIG_PACKET_SIZE);
 		if (text[0]==0)
-			strcpy_s(text, BIG_PACKET_SIZE, "natpunch.jenkinssoftware.com"); // dx in Europe
+			strcpy_s(text, BIG_PACKET_SIZE, "slikesoft.com"); // dx in Europe
 	}
 	else if (ch=='s')
 	{

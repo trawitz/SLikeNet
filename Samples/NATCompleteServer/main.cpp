@@ -492,15 +492,19 @@ int main(int argc, char **argv)
 	SystemAddress ipList[ MAXIMUM_NUMBER_OF_INTERNAL_IDS ];
 	printf("IPs:\n");
 	unsigned int i;
-	for (i=0; i < MAXIMUM_NUMBER_OF_INTERNAL_IDS; i++)
-	{
+	for (i=0; i < MAXIMUM_NUMBER_OF_INTERNAL_IDS; i++) {
 		ipList[i]=rakPeer->GetLocalIP(i);
 		if (ipList[i]!=UNASSIGNED_SYSTEM_ADDRESS)
 			printf("%i. %s\n", i+1, ipList[i].ToString(false));
 		else
 			break;
 	}
-		
+
+	if (i == 0 && argc <= 3) {
+		printf("Could not determine any local IP address.\n");
+		return 3;
+	}
+
 	// If RakPeer is started on 2 IP addresses, NATPunchthroughServer supports port stride detection, improving success rate
 	int sdLen=1;
 	SLNet::SocketDescriptor sd[2];
@@ -513,26 +517,39 @@ int main(int argc, char **argv)
 		}
 		DEFAULT_RAKPEER_PORT = static_cast<unsigned short>(intPeerPort);
 	}
-	
-	sd[0].port=DEFAULT_RAKPEER_PORT;
-	printf("Using port %i\n", sd[0].port);
-	if (i>=2)
-	{
-		strcpy_s(sd[0].hostAddress, ipList[0].ToString(false));
-		sd[1].port=DEFAULT_RAKPEER_PORT+1;
-		strcpy_s(sd[1].hostAddress, ipList[1].ToString(false));
-		sdLen=2;
+
+	// set the first IP address
+	sd[0].port = DEFAULT_RAKPEER_PORT;
+	// #med - improve the logic here to simplify the handling...
+	if (argc > 2)
+		strcpy_s(sd[0].hostAddress, argv[2]);
+
+	// #high - improve determining the proper IP addresses
+	//         - filter between IPv4/IPv6 and only use either of these
+	//         - fallback to other IP addresses, if a given one failed to be bound
+	// allow enforcing single IP address mode by specifying second/third argument to the same IP address
+	if ((i >= 2 && argc <= 3) || (argc > 3)) {
+		const char *ipAddress1 = (argc > 2) ? argv[2] : ipList[0].ToString(false);
+		const char *ipAddress2 = (argc > 3) ? argv[3] : ipList[1].ToString(false);
+		strcpy_s(sd[0].hostAddress, ipAddress1);
+		sd[1].port = DEFAULT_RAKPEER_PORT+1;
+		strcpy_s(sd[1].hostAddress, ipAddress2);
+		printf("Dual IP address mode.\nFirst IP Address: '%s' (port: %u)\nSecond IP Address: '%s' (port: %u)\n", ipAddress1, sd[0].port, ipAddress2, sd[1].port);
+		sdLen = 2;
+	}
+	else {
+		printf("Single IP address mode.\nUsing port %i\n", sd[0].port);
 	}
 
-	if (rakPeer->Startup(8096,sd,sdLen)!= SLNet::RAKNET_STARTED)
+	const StartupResult success = rakPeer->Startup(8096, sd, sdLen);
+	if (success != SLNet::RAKNET_STARTED)
 	{
-		printf("Failed to start rakPeer! Quitting\n");
+		printf("Failed to start rakPeer! Quitting - error code: %d\n", success);
 		SLNet::RakPeerInterface::DestroyInstance(rakPeer);
 		return 1;
 	}
 	rakPeer->SetTimeoutTime(5000, UNASSIGNED_SYSTEM_ADDRESS);
-	printf("Started on %s\n", rakPeer->GetMyBoundAddress().ToString(true));
-	printf("\n");
+	printf("Started on %s\n\n", rakPeer->GetMyBoundAddress().ToString(true));
 
 	rakPeer->SetMaximumIncomingConnections(8096);
 

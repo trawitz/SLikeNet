@@ -168,7 +168,7 @@ int main(void)
 		printf("Enter IP of facilitator (enter for default): ");
 		Gets(facilitatorIP,sizeof(facilitatorIP));
 		if (facilitatorIP[0]==0)
-			strcpy_s(facilitatorIP, "natpunch.jenkinssoftware.com");
+			strcpy_s(facilitatorIP, "slikesoft.com");
 		facilitator.FromString(facilitatorIP);
 		facilitator.SetPortHostOrder(NAT_PUNCHTHROUGH_FACILITATOR_PORT);
 		rakPeer->Connect(facilitatorIP, NAT_PUNCHTHROUGH_FACILITATOR_PORT, 0, 0);

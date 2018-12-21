@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2017, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -56,7 +56,7 @@ void main(void)
 		RakSleep(30);
 	}
 
-	SLNet::ConnectionAttemptResult car = rakPeer->Connect("natpunch.jenkinssoftware.com", 61111, 0, 0);
+	SLNet::ConnectionAttemptResult car = rakPeer->Connect("slikesoft.com", 61111, 0, 0);
 	(void) car;
 	for(;;)
 	{
