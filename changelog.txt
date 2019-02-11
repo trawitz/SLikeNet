@@ -28,6 +28,7 @@ Core:
   RakNetSocket2:
     * revised RakNetSocket2::GetMyIP() to determine own IPs more reliably (f.e. on OSX) (#217 - SLNET_36)
     * fixed failure in RNS2_Berkley::BindSharedIPV4() always reporting an "unknown" error on OSX (#258)
+    * fixed RakNetSocket2::DomainNameToIP() not retrieving the proper IP (#260 - SLNET_45)
   RakPeer:
     * improve handling of disconnecting peers (#123 - SLNET_16)
   RakWString:

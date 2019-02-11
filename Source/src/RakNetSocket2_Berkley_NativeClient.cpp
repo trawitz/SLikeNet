@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2017, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -63,7 +63,7 @@ void DomainNameToIP_Berkley_IPV4And6( const char *domainName, char ip[65] )
 			addr = &(ipv6->sin6_addr);
 			// inet_ntop function does not exist on windows
 			// http://www.mail-archive.com/users@ipv6.org/msg02107.html
-			getnameinfo((struct sockaddr *)ipv6, sizeof(struct sockaddr_in6), ip, 1, NULL, 0, NI_NUMERICHOST);
+			getnameinfo((struct sockaddr *)ipv6, sizeof(struct sockaddr_in6), ip, sizeof(ip), NULL, 0, NI_NUMERICHOST);
 		}
 		freeaddrinfo(res); // free the linked list
 //	}
