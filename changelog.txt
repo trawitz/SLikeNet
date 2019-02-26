@@ -31,6 +31,7 @@ Core:
     * fixed RakNetSocket2::DomainNameToIP() not retrieving the proper IP (#260 - SLNET_45)
   RakPeer:
     * improve handling of disconnecting peers (#123 - SLNET_16)
+    * fixed crash in RakPeer::GetNumberOfAddresses() when the machine has >= 10 IPs (#261)
   RakWString:
     * added missing definition of global +-operator for two RakWStrings (#225)
   ReliabilityLayer:
