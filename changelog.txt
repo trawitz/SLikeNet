@@ -21,6 +21,8 @@ General:
   * documentation updates (#130, #160, #257)
   * updated changelog entries related to security issues in previous versions (#130)
 Core:
+  General:
+    * fixed NonNumericHostString() incorrectly identifying numeric as non-numeric addresses (#262)
   FullyConnectedMesh2:
     * fixed incorrect delete in FullyConnectedMesh2::Clear() when using a custom allocator (#249)
   HTTPConnection2:
@@ -29,6 +31,7 @@ Core:
     * revised RakNetSocket2::GetMyIP() to determine own IPs more reliably (f.e. on OSX) (#217 - SLNET_36)
     * fixed failure in RNS2_Berkley::BindSharedIPV4() always reporting an "unknown" error on OSX (#258)
     * fixed RakNetSocket2::DomainNameToIP() not retrieving the proper IP (#260 - SLNET_45)
+    * fixed RakNetSocket2::DomainNameToIP() failing to resolve the domain name (#264)
   RakPeer:
     * improve handling of disconnecting peers (#123 - SLNET_16)
     * fixed crash in RakPeer::GetNumberOfAddresses() when the machine has >= 10 IPs (#261)
@@ -40,6 +43,10 @@ Core:
   ReplicaManager3:
     * fixed multiple threading issues, with using ReplicaManager3 (#248)
     * fixed incorrect delete in ReplicaManager3::Clear() when using a custom allocator (#249)
+  SystemAddress:
+    * fixed multiple issues related to port resolution in hostnames upon construction or through SystemAddress::FromString() (#263 - SLNET_46)
+    * fixed cases where using a hostname to create a system address, calling SystemAddress::FromString(), or SystemAddress::SetBinaryAddress() can fail in IPv4 mode (#264)
+    * fixed localhost not being resolved properly, if set to something other than 127.0.0.1 on the current system (#265)
   TeamManager:
     * fixed incorrect delete in TeamManager::Clear() when using a custom allocator (#249)
   WindowsStore8:

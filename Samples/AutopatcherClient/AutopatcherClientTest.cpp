@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2017, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -230,7 +230,7 @@ int main(int argc, char **argv)
 		printf("Enter server IP: ");
 		Gets(buff,sizeof(buff));
 		if (buff[0]==0)
-			//strcpy_s(buff, "natpunch.jenkinssoftware.com");
+			//strcpy_s(buff, "natpunch.slikesoft.com");
 			strcpy_s(buff, "127.0.0.1");
 	}
 	else

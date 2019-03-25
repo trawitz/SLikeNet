@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -50,7 +50,7 @@
 
 #define DEFAULT_SERVER_PORT "61111"
 // Public test server
-#define DEFAULT_SERVER_ADDRESS "slikesoft.com"
+#define DEFAULT_SERVER_ADDRESS "natpunch.slikesoft.com"
 #define NAT_TYPE_DETECTION_SERVER 0
 #define USE_UPNP 1
 #define MASTER_SERVER_ADDRESS "masterserver2.raknet.com"

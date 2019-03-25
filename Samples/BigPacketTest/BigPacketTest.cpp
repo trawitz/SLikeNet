@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -62,7 +62,7 @@ int main(void)
 		printf("Enter remote IP: ");
 		Gets(text,BIG_PACKET_SIZE);
 		if (text[0]==0)
-			strcpy_s(text, BIG_PACKET_SIZE, "slikesoft.com"); // dx in Europe
+			strcpy_s(text, BIG_PACKET_SIZE, "natpunch.slikesoft.com"); // dx in Europe
 	}
 	else if (ch=='s')
 	{

@@ -54,6 +54,7 @@ bool HTTPConnection2::TransmitRequest(const char* stringToTransmit, const char* 
 	}
 	else
 	{
+		// #med - this should be changed to not extract the port from the passed in host-address (which is overwritten directly below with the provided port anyway)
 		if (request->hostEstimatedAddress.FromString(host, '|', ipVersion)==false)
 		{
 			SLNet::OP_DELETE(request, _FILE_AND_LINE_);
