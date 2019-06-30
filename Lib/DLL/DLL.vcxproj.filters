@@ -362,6 +362,9 @@
     <ClCompile Include="..\..\Source\src\crypto\fileencrypter.cpp">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\src\crypto\cryptomanager.cpp">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\include\slikenet\_FindFirst.h">
@@ -836,6 +839,9 @@
       <Filter>Header Files\crypto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\include\slikenet\crypto\ifileencrypter.h">
+      <Filter>Header Files\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\include\slikenet\crypto\cryptomanager.h">
       <Filter>Header Files\crypto</Filter>
     </ClInclude>
   </ItemGroup>

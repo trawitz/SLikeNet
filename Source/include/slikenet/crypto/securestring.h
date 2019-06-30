@@ -1,5 +1,5 @@
 /*
-*  Copyright (c) 2018, SLikeSoft UG (haftungsbeschränkt)
+*  Copyright (c) 2018-2019, SLikeSoft UG (haftungsbeschränkt)
 *
 *  This source code is  licensed under the MIT-style license found in the license.txt
 *  file in the root directory of this source tree.
@@ -24,10 +24,12 @@ namespace SLNet
 			private:
 				bool m_UTF8Mode;
 				bool m_wasFlushed;
-				size_t m_EncryptedBufferSize;
-				size_t m_numBufferUsed;
-				size_t m_UnencryptedBufferSize;
-				char* m_EncryptedMemory;
+				size_t m_EncryptedBufferSize;    // size of the buffer for the encrypted string
+				size_t m_numBufferSize;          // size of the actual supported string buffer (excluding the trailing \0-terminator)
+				size_t m_numBufferUsed;          // size of the available buffer currently used
+				size_t m_numEncryptedBufferUsed; // size of the encrypted buffer which is used and contains the encrypted data
+				size_t m_UnencryptedBufferSize;  // size of the buffer allocated to retrieve the decrypted string
+				unsigned char* m_EncryptedMemory;
 				char* m_UnencryptedBuffer;
 
 				// constructor / destructor
@@ -37,7 +39,7 @@ namespace SLNet
 
 				// container methods
 			public:
-				bool AddChar(char* character);
+				size_t AddChar(char* character);
 				bool RemoveLastChar();
 				void Reset();
 

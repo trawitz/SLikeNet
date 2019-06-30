@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Copyright (c) 2018-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code is  licensed under the MIT-style license found in the license.txt
  *  file in the root directory of this source tree.
@@ -7,11 +7,11 @@
 #include "slikenet/crypto/securestring.h"
 
 // #med - review the include order - defines.h defines SLNET_VERIFY but doesn't enforce including assert.h which it honestly should
-#include "slikenet/assert.h"			// used for assert() (via SLNET_VERIFY)
-#include "slikenet/memoryoverride.h"	// used for OP_NEW_ARRAY
-#include "slikenet/WindowsIncludes.h"	// used for CryptProtectMemory, CryptUnprotectMemory, CRYPTPROTECTMEMORY_BLOCK_SIZE
+#include "slikenet/crypto/cryptomanager.h" // used for CCryptoManager
+#include "slikenet/assert.h"               // used for assert() (via SLNET_VERIFY)
+#include "slikenet/memoryoverride.h"       // used for OP_NEW_ARRAY
 
-#include <limits>	// used for std::numeric_limits
+#include <limits> // used for std::numeric_limits
 
 namespace SLNet
 {
@@ -23,109 +23,119 @@ namespace SLNet
 			CSecureString::CSecureString(const size_t maxBufferSize, const bool utf8Mode) :
 				m_UTF8Mode(utf8Mode),
 				m_wasFlushed(false),
+				m_numBufferSize(maxBufferSize),
 				m_numBufferUsed(0),
-				m_UnencryptedBufferSize(maxBufferSize + 1) // +1 for trailing '\0'-char
+				m_numEncryptedBufferUsed(0)
 			{
-				// #high - add Linux/OSX handling
-				// allocate and encrypt buffer
-				size_t padding = maxBufferSize % CRYPTPROTECTMEMORY_BLOCK_SIZE;
-				m_EncryptedBufferSize = maxBufferSize - padding + (padding > 0 ? CRYPTPROTECTMEMORY_BLOCK_SIZE : 0);
-				if (m_EncryptedBufferSize > std::numeric_limits<DWORD>::max()) {
-					// #high - exception/error logging
-					m_EncryptedBufferSize = std::numeric_limits<DWORD>::max();
-					padding = m_EncryptedBufferSize % CRYPTPROTECTMEMORY_BLOCK_SIZE;
-					if (padding > 0) {
-						m_EncryptedBufferSize -= CRYPTPROTECTMEMORY_BLOCK_SIZE + padding;
-					}
-					if (m_UnencryptedBufferSize > m_EncryptedBufferSize) {
-						m_UnencryptedBufferSize = m_EncryptedBufferSize + 1; // +1 for trailing '\0' char
-					}
-				}
 				// #high - add proper handling for char sizes ~= 1 byte!
-				// #high - root through memory manager (aka: OP_NEW_ARRAY)
-				// #high - raise exception upon failure to allocate
-				m_EncryptedMemory = static_cast<char*>(LocalAlloc(LPTR, m_EncryptedBufferSize));
-				// #high - change OP_NEW_ARRAY() count parameter to size_t
-				m_UnencryptedBuffer = OP_NEW_ARRAY<char>(static_cast<int>(m_UnencryptedBufferSize), _FILE_AND_LINE_);
 
-				// note: we must flush the data, so it's properly zeroed (for trailing null-terminator behavior in Decrypt() which otherwise would be broken)
-				FlushUnencryptedData();
+				// #med - add missing size_t overflow check if maxBufferSize == size_t::max()
+				// #high - raise exception upon failure to retrieve the proper size
+				// note: we don't encrypt the trailing null terminator -> only requiring maxBufferSize amount of data here
+				m_EncryptedBufferSize = maxBufferSize;
+				SLNET_VERIFY(CCryptoManager::GetRequiredEncryptionBufferSize(m_EncryptedBufferSize));
+
+				// note: we must set the unencrypted buffer size to the size required for the encrypted buffer (which is ensured to be >= maxBufferSize) since the
+				//       CCryptoManager::DecryptSessionData() requires the unencrypted buffer size to be at least the size of the encrypted buffer (in order to prevent potential buffer overruns)
+				m_UnencryptedBufferSize = m_EncryptedBufferSize + 1; // +1 for trailing '\0'-char (which is not part of the encrypted data)
+
+				// #high - raise exception upon failure to allocate
+				m_EncryptedMemory = static_cast<unsigned char*>(CCryptoManager::AllocateSecureMemory(m_EncryptedBufferSize));
+				// note: also keep the unencrypted buffer in the secure memory space, so any memory specific security features (f.e. privilege or enclave
+				//       restrictions) also apply for the unencrypted data
+				m_UnencryptedBuffer = static_cast<char*>(CCryptoManager::AllocateSecureMemory(m_UnencryptedBufferSize));
 			}
 
 			CSecureString::~CSecureString()
 			{
-				// calling reset so to ensure that the data is flushed and no trace to the data is left behind and also the encrypted memory got removed
-				// (to not leave it behind after the lifetime of the buffer ended)
-				Reset();
+				// make sure that no data is leaked which could hint to the content of the secure string (i.e. the used size) after the object
+				// was destroyed
+				CCryptoManager::SecureClearMemory(&m_numBufferUsed, sizeof(size_t));
 
-				LocalFree(m_EncryptedMemory);
+				CCryptoManager::FreeSecureMemory(m_EncryptedMemory, m_EncryptedBufferSize);
 				m_EncryptedMemory = nullptr;
 
-				OP_DELETE_ARRAY(m_UnencryptedBuffer, _FILE_AND_LINE_);
+				CCryptoManager::FreeSecureMemory(m_UnencryptedBuffer, m_UnencryptedBufferSize);
 				m_UnencryptedBuffer = nullptr;
 			}
 
-			bool CSecureString::AddChar(char* character)
+			size_t CSecureString::AddChar(char* character)
 			{
+				// #med skip or error out if '\0'? since this would just be pointless as the trailing null terminator is written implicitly upon decryption...
 				if (character == nullptr) {
 					// #high - add error output
-					return false;
+					return 0;
 				}
 
 				size_t charSize = 1;
 				if (m_UTF8Mode) {
 					// calculate char size
-					if (static_cast<unsigned char>(character[0]) > 0xF0) {
+					if (static_cast<unsigned char>(character[0]) >= 0xF0) {
 						charSize = 4;
 					}
-					else if(static_cast<unsigned char>(character[0]) > 0xE0) {
+					else if(static_cast<unsigned char>(character[0]) >= 0xE0) {
 						charSize = 3;
 					}
-					else if (static_cast<unsigned char>(character[0]) > 0xC0) {
+					else if (static_cast<unsigned char>(character[0]) >= 0xC0) {
 						charSize = 2;
 					}
-					else if (static_cast<unsigned char>(character[0]) > 0x80) {
+					else if (static_cast<unsigned char>(character[0]) >= 0x80) {
 						// invalid encoding
 						// #high - add error output
 						// note: not nulling, since obviously the input data is wrong (not a UTF8-char)
-						return false;
+						return 0;
 					}
 					// else single byte char
 
 					// validate the 10-prefixes for bytes 2ff.
-					for (int i = 1; i < charSize; ++i) {
+					for (size_t i = 1; i < charSize; ++i) {
 						if (static_cast<unsigned char>(character[i]) < 0x80) {
 							// #high - add error output
 							// note: not nulling, since obviously the input data is wrong (not a UTF8-char)
-							return false;
+							return 0;
 						}
 					}
 				}
 
-				if (m_numBufferUsed + charSize > m_UnencryptedBufferSize) {
+				if (m_numBufferUsed + charSize > m_numBufferSize) {
 					// out of memory / ensure source data was cleared regardless
 					// #high - add error output
-					// #high - Linux/OSX handling
-					SecureZeroMemory(character, charSize);
-					return false;
+					CCryptoManager::SecureClearMemory(character, charSize);
+					return 0;
 				}
 
 				// decrypt, add, and re-encrypt the data
 				// note: do not decrypting the memory if it wasn't encrypted yet
 				if (m_numBufferUsed > 0) {
-					// note: static cast to DWORD is fine here - m_EncryptedBufferSize ensured not to exceed DWORD::max()
-					SLNET_VERIFY(CryptUnprotectMemory(m_EncryptedMemory, static_cast<DWORD>(m_EncryptedBufferSize), CRYPTPROTECTMEMORY_SAME_PROCESS));
+					RakAssert(m_numEncryptedBufferUsed > 0);
+					size_t bufferSize = (m_UnencryptedBufferSize - 1);
+					// #high - add error output
+					if (!CCryptoManager::DecryptSessionData(m_EncryptedMemory, m_numEncryptedBufferUsed, reinterpret_cast<unsigned char*>(m_UnencryptedBuffer), bufferSize)) {
+						// error decrypting the encrypted memory / ensure source data was cleared regardless
+						CCryptoManager::SecureClearMemory(character, charSize);
+						return 0;
+					}
 				}
-				// #high - add error handling
-				memcpy_s(m_EncryptedMemory + m_numBufferUsed, m_EncryptedBufferSize - m_numBufferUsed, character, charSize);
+				memcpy_s(m_UnencryptedBuffer + m_numBufferUsed, m_UnencryptedBufferSize - m_numBufferUsed, character, charSize);
 				m_numBufferUsed += charSize;
-				// #high - add error handling
-				// note: static cast to DWORD is fine here - m_EncryptedBufferSize ensured not to exceed DWORD::max()
-				SLNET_VERIFY(CryptProtectMemory(m_EncryptedMemory, static_cast<DWORD>(m_EncryptedBufferSize), CRYPTPROTECTMEMORY_SAME_PROCESS));
 
 				// clear the source data
-				SecureZeroMemory(character, charSize);
-				return true;
+				CCryptoManager::SecureClearMemory(character, charSize);
+
+				// #high - add error handling
+				size_t bufferSize = m_EncryptedBufferSize;
+				// note: we always encrypt the entire buffer rather than just the used portion of it, so to not leak any information about the encrypted string (i.e. its length)
+				// note: correct to use m_numBufferSize here which is the actual max data-length for the secure string
+				const bool success = CCryptoManager::EncryptSessionData(reinterpret_cast<unsigned char*>(m_UnencryptedBuffer), m_numBufferSize, m_EncryptedMemory, bufferSize);
+				if (success) {
+					m_numEncryptedBufferUsed = bufferSize;
+				}
+
+				// clear the unencrypted buffer after it got reencrypted (to be safe, clear the full buffer, not just the m_numBufferSize portion / this also prevents leaking the
+				// null-terminator in the buffer)
+				CCryptoManager::SecureClearMemory(m_UnencryptedBuffer, m_UnencryptedBufferSize);
+
+				return success ? charSize : 0;
 			}
 
 			bool CSecureString::RemoveLastChar()
@@ -135,20 +145,27 @@ namespace SLNet
 				}
 
 				size_t numCharsToRemove = 0;
-				if (m_UTF8Mode) {
-					// note: static cast to DWORD is fine here - m_EncryptedBufferSize ensured not to exceed DWORD::max()
-					SLNET_VERIFY(CryptUnprotectMemory(m_EncryptedMemory, static_cast<DWORD>(m_EncryptedBufferSize), CRYPTPROTECTMEMORY_SAME_PROCESS));
+				if (m_UTF8Mode && (m_numBufferUsed >= 1)) {
+					// note: if we are in UTF8-mode and only have a single encoded UTF8-byte left to remove, there's no need to decrypt and check the string
+					//       adding a check here would be redundant with the check we do in AddChar(), which already ensures that there are no invalid UTF-8 encoded strings in the encrypted secure
+					//       string buffer
+
+					size_t bufferSize = (m_UnencryptedBufferSize - 1);
+					if (!CCryptoManager::DecryptSessionData(m_EncryptedMemory, m_numEncryptedBufferUsed, reinterpret_cast<unsigned char*>(m_UnencryptedBuffer), bufferSize)) {
+						// error decrypting the encrypted memory
+						return false;
+					}
 
 					// iterate backwards over the UTF-8 encoded chars, to find the starting char (which will have a different encoding than 10xxxxxx)
-					while ((static_cast<unsigned char>(m_EncryptedMemory[m_numBufferUsed - numCharsToRemove]) & 0xC0) == 0x80) {
+					while ((static_cast<unsigned char>(m_UnencryptedBuffer[m_numBufferUsed - numCharsToRemove - 1]) & 0xC0) == 0x80) {
 						++numCharsToRemove;
 						RakAssert(m_numBufferUsed >= numCharsToRemove);
 					}
 
-					// note: static cast to DWORD is fine here - m_EncryptedBufferSize ensured not to exceed DWORD::max()
-					SLNET_VERIFY(CryptProtectMemory(m_EncryptedMemory, static_cast<DWORD>(m_EncryptedBufferSize), CRYPTPROTECTMEMORY_SAME_PROCESS));
+					// clear the unencrypted buffer after it got reencrypted
+					CCryptoManager::SecureClearMemory(m_UnencryptedBuffer, m_UnencryptedBufferSize);
 				}
-				++numCharsToRemove;
+				++numCharsToRemove; // either remove a single char (in ASCII mode) or the first character before the continuing chars which were removed in the while-loop above
 				RakAssert(numCharsToRemove <= 4);
 				RakAssert(m_numBufferUsed >= numCharsToRemove);
 
@@ -164,9 +181,11 @@ namespace SLNet
 				// resetting the memory buffer also explicitly resets any not-yet flushed unencrypted buffer
 				FlushUnencryptedData();
 
-				SecureZeroMemory(m_EncryptedMemory, m_EncryptedBufferSize);
+				// also clear the encrypted data so to not leave behind any residues of the old data (even if only in encrypted form)
+				CCryptoManager::SecureClearMemory(m_EncryptedMemory, m_EncryptedBufferSize);
 
 				m_numBufferUsed = 0;
+				m_numEncryptedBufferUsed = 0;
 			}
 
 			const char* CSecureString::Decrypt()
@@ -180,18 +199,17 @@ namespace SLNet
 				// flushing the data here to safeguard against the user having forgotten to flush existing unencrypted data of some old encrypted data
 				// (which then would remain in memory if the new data's length is smaller than the old ones)
 				// note: since we flush the data, we don't need to write a trailing null-terminator lateron (i.e. entire memory is zeroed here)
-				// #med - consider adding the trailing null-terminator to the encrypted memory already (and then drop the note above and -1 below in memcpy_s())
 				FlushUnencryptedData();
 
-				// #high - add error handling
-				// note: static cast to DWORD is fine here - m_EncryptedBufferSize ensured not to exceed DWORD::max()
-				SLNET_VERIFY(CryptUnprotectMemory(m_EncryptedMemory, static_cast<DWORD>(m_EncryptedBufferSize), CRYPTPROTECTMEMORY_SAME_PROCESS));
-				// #high - add error handling
-				// -1 due to reserved space for trailing null-terminated
-				memcpy_s(m_UnencryptedBuffer, m_UnencryptedBufferSize - 1, m_EncryptedMemory, m_numBufferUsed);
-				// #high - add error handling
-				SLNET_VERIFY(CryptProtectMemory(m_EncryptedMemory, static_cast<DWORD>(m_EncryptedBufferSize), CRYPTPROTECTMEMORY_SAME_PROCESS));
+				size_t bufferSize = (m_UnencryptedBufferSize - 1);
+				if (!CCryptoManager::DecryptSessionData(m_EncryptedMemory, m_numEncryptedBufferUsed, reinterpret_cast<unsigned char*>(m_UnencryptedBuffer), bufferSize)) {
+					// error decrypting the encrypted memory
+					// #high - add error handling
+					return "";
+				}
 
+				// write trailing null terminator (which is not part of the encrypted data)
+				m_UnencryptedBuffer[m_numBufferUsed] = '\0';
 				m_wasFlushed = false;
 				return m_UnencryptedBuffer;
 			}
@@ -199,7 +217,7 @@ namespace SLNet
 			void CSecureString::FlushUnencryptedData()
 			{
 				if (!m_wasFlushed) {
-					SecureZeroMemory(m_UnencryptedBuffer, m_UnencryptedBufferSize);
+					CCryptoManager::SecureClearMemory(m_UnencryptedBuffer, m_UnencryptedBufferSize);
 					m_wasFlushed = true;
 				}
 			}
