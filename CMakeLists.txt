@@ -3,8 +3,7 @@
 # Please see licenses/RakNet license.txt for the underlying license and related copyright.
 #
 #
-#
-# Modified work: Copyright (c) 2016, SLikeSoft UG (haftungsbeschränkt)
+# Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
 #
 # This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
 # license found in the license.txt file in the root directory of this source tree.
@@ -12,7 +11,11 @@
 
 cmake_minimum_required(VERSION 2.6)
 
-project(RakNet)
+project(SLikeNet)
+
+# specify the project version number
+set(SLikeNet_VERSION "0.2.0")
+set(SLikeNet_API_VERSION "0.2")
 
 # CMake policy settings
 if( POLICY CMP0037 )
@@ -31,25 +34,15 @@ if( CMAKE_VERSION VERSION_LESS 3.0 )
 	endif()
 endif()
 
-
-if( NOT APPLE )
-# check 64 bit
-if( CMAKE_SIZEOF_VOID_P MATCHES "4" )
-  set( HAVE_64_BIT 0 )
-else(  CMAKE_SIZEOF_VOID_P MATCHES "4")
-  set( HAVE_64_BIT 1 )
-endif(  CMAKE_SIZEOF_VOID_P MATCHES "4")
-endif( NOT APPLE )
-
 IF (WIN32 AND NOT UNIX)
 	set (PROGRAMFILESX86 $ENV{PROGRAMFILES})
 	string(REPLACE "\\" "/" PROGRAMFILESX86 "${PROGRAMFILESX86}")
 ENDIF(WIN32 AND NOT UNIX)
 
 IF (WIN32 AND NOT UNIX)
-	set(RAKNET_LIBRARY_LIBS ws2_32.lib)
+	set(SLIKENET_LIBRARY_LIBS ws2_32.lib)
 ELSE(WIN32 AND NOT UNIX)
-	set(RAKNET_LIBRARY_LIBS pthread)
+	set(SLIKENET_LIBRARY_LIBS pthread)
 ENDIF(WIN32 AND NOT UNIX)
 
 # enable C++11 language support for GCC
@@ -66,39 +59,41 @@ endif()
 
 # Options
 IF (WIN32 AND NOT UNIX)
-	option( RAKNET_ENABLE_SAMPLES 	"Generate RakNet sample projects if true." 		TRUE  )
+	option( SLIKENET_ENABLE_SAMPLES 	"Generate sample projects if true."         TRUE  )
 ELSE (WIN32 AND NOT UNIX)
 	# building samples is disabled atm by default on Unix/Mac, since the sample projects won't compile correctly
-	option( RAKNET_ENABLE_SAMPLES 	"Generate RakNet sample projects if true." 		FALSE  )
+	option( SLIKENET_ENABLE_SAMPLES 	"Generate sample projects if true."         FALSE  )
 ENDIF(WIN32 AND NOT UNIX)
-option( RAKNET_ENABLE_DLL		"Generate the DLL project if true." 			TRUE )
-option( RAKNET_ENABLE_STATIC	"Generate the static library project if true." 	TRUE )
-option( RAKNET_GENERATE_INCLUDE_ONLY_DIR "Setup a include/RakNet/ directory in which all the headers are copied." FALSE )
+option( SLIKENET_ENABLE_DLL		"Generate the DLL / shared object project if true." TRUE )
+option( SLIKENET_ENABLE_STATIC	"Generate the static library project if true."      TRUE )
+option( SLIKENET_GENERATE_INCLUDE_ONLY_DIR "Setup an include/slikenet/ directory in which all the headers are copied." FALSE )
 
-set( RAKNETHEADERFILES ${RakNet_SOURCE_DIR}/Source ) #This name doesn't follow CMake conventions but for retro compatibility I'll let it there.
+set( SLIKENET_HEADER_FILES ${SLikeNet_SOURCE_DIR}/Source )
 
-if( RAKNET_GENERATE_INCLUDE_ONLY_DIR )
-	set( RAKNET_INCLUDE_ONLY_DIR ${RakNet_SOURCE_DIR}/include ) # this will be visible by client code
-	set( RAKNET_NAMED_INCLUDE_ONLY_DIR ${RAKNET_INCLUDE_ONLY_DIR}/RakNet )
-	message( STATUS "Setting up the ${RAKNET_NAMED_INCLUDE_ONLY_DIR} directory..." )
-	# Now setup the include/RakNet/*.h files.
-	file( MAKE_DIRECTORY ${RAKNET_NAMED_INCLUDE_ONLY_DIR} )
-	file( COPY ${RAKNETHEADERFILES}/ DESTINATION ${RAKNET_NAMED_INCLUDE_ONLY_DIR} FILES_MATCHING PATTERN "*.h"  )
-	message( STATUS "DONE: Setting up the ${RAKNET_NAMED_INCLUDE_ONLY_DIR} directory." )
+# note: while it's straight forward to get the SLikeNet include files directly from source (since they are cleanly organized under Source/include/slikenet/*), copying the headers in RakNet compatibility mode is not that clear
+#       since we are planning to add support for RakNet compatibility mode to CMake too, we keep this option
+#       also the planned addition for making experimental features optional/configurable would require additional logic here, so that there certainly is a purpose for this feature even with the cleaner header file structure in SLikeNet
+if( SLIKENET_GENERATE_INCLUDE_ONLY_DIR )
+	set( SLIKENET_INCLUDE_ONLY_DIR ${SLikeNet_SOURCE_DIR}/include ) # this will be visible by client code
+	set( SLIKENET_NAMED_INCLUDE_ONLY_DIR ${SLIKENET_INCLUDE_ONLY_DIR}/slikenet )
+	message( STATUS "Setting up the ${SLIKENET_NAMED_INCLUDE_ONLY_DIR} directory..." )
+
+	# Now setup the include/slikenet directory.
+	file( MAKE_DIRECTORY ${SLIKENET_NAMED_INCLUDE_ONLY_DIR} )
+	file( MAKE_DIRECTORY ${SLIKENET_NAMED_INCLUDE_ONLY_DIR}/crypto )
+	file( COPY ${SLIKENET_HEADER_FILES}/include/slikenet DESTINATION ${SLIKENET_NAMED_INCLUDE_ONLY_DIR} )
+	file( COPY ${SLIKENET_HEADER_FILES}/include/slikenet/crypto DESTINATION ${SLIKENET_NAMED_INCLUDE_ONLY_DIR} )
+	message( STATUS "DONE: Setting up the ${SLIKENET_NAMED_INCLUDE_ONLY_DIR} directory." )
 endif()
-
-set( RAKNET_INCLUDE_DIRS ${RAKNETHEADERFILES} ${RAKNET_INCLUDE_ONLY_DIR} ) # Visible from outside
 
 include(./CmakeIncludes/CmakeMacros.txt)
 FIXLINKOPTIONS()
 FIXCOMPILEOPTIONS()
 
-
 add_subdirectory(Lib)
 
+set(SLIKENET_COMMON_LIBS SLikeNetLibStatic)
 
-set(RAKNET_COMMON_LIBS RakNetLibStatic)
-
-if( RAKNET_ENABLE_SAMPLES )
+if(SLIKENET_ENABLE_SAMPLES)
 	add_subdirectory(Samples)
 endif()

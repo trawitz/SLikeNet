@@ -3,7 +3,7 @@
 # Please see licenses/RakNet license.txt for the underlying license and related copyright.
 #
 #
-# Modified work: Copyright (c) 2017, SLikeSoft UG (haftungsbeschränkt)
+# Modified work: Copyright (c) 2017-2019, SLikeSoft UG (haftungsbeschränkt)
 #
 # This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
 # license found in the license.txt file in the root directory of this source tree.
@@ -18,14 +18,14 @@ IF(WIN32 AND NOT UNIX)
 	SOURCE_GROUP(BZip FILES ${BZSRC})
 	SOURCE_GROUP("Source Files" FILES ${AUTOSRC})
 	SOURCE_GROUP(Main "AutopatcherServerTest_MySQL.cpp")
-	include_directories(${RAKNETHEADERFILES} ./ ${AutopatcherMySQLRepository_SOURCE_DIR} ${MySQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR} ${BZip2_SOURCE_DIR}) 
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${AutopatcherMySQLRepository_SOURCE_DIR} ${MySQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR} ${BZip2_SOURCE_DIR}) 
 	add_executable("AutoPatcherServer_MySQL" "AutopatcherServerTest_MySQL.cpp" ${AUTOSRC} ${BZSRC})
-	target_link_libraries("AutoPatcherServer_MySQL" ${RAKNET_COMMON_LIBS} AutoPatcherMySQLRepository)
+	target_link_libraries("AutoPatcherServer_MySQL" ${SLIKENET_COMMON_LIBS} AutoPatcherMySQLRepository)
 	VSUBFOLDER(AutoPatcherServer_MySQL "Samples/AutoPatcher/Server/MySQL")
 ELSE(WIN32 AND NOT UNIX)
-	include_directories(${RAKNETHEADERFILES} ./ ${AutopatcherMySQLRepository_SOURCE_DIR} ${MySQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR}) 
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${AutopatcherMySQLRepository_SOURCE_DIR} ${MySQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR}) 
 	add_executable("AutoPatcherServer_MySQL" "AutopatcherServerTest_MySQL.cpp")
-	target_link_libraries("AutoPatcherServer_MySQL" ${RAKNET_COMMON_LIBS} LibAutopatcher AutoPatcherMySQLRepository LibMySQLInterface)
+	target_link_libraries("AutoPatcherServer_MySQL" ${SLIKENET_COMMON_LIBS} LibAutopatcher AutoPatcherMySQLRepository LibMySQLInterface)
 ENDIF(WIN32 AND NOT UNIX)
 
 

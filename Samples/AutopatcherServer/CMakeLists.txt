@@ -3,7 +3,7 @@
 # Please see licenses/RakNet license.txt for the underlying license and related copyright.
 #
 #
-# Modified work: Copyright (c) 2017, SLikeSoft UG (haftungsbeschränkt)
+# Modified work: Copyright (c) 2017-2019, SLikeSoft UG (haftungsbeschränkt)
 #
 # This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
 # license found in the license.txt file in the root directory of this source tree.
@@ -19,14 +19,14 @@ IF(WIN32 AND NOT UNIX)
 	SOURCE_GROUP(BZip FILES ${BZSRC})
 	SOURCE_GROUP("Source Files" FILES ${AUTOSRC})
 	SOURCE_GROUP(Main "AutopatcherServerTest.cpp")
-	include_directories(${RAKNETHEADERFILES} ./ ${AutopatcherPostgreRepository_SOURCE_DIR} ${PostgreSQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR} ${BZip2_SOURCE_DIR}) 
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${AutopatcherPostgreRepository_SOURCE_DIR} ${PostgreSQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR} ${BZip2_SOURCE_DIR}) 
 	add_executable(AutopatcherServer_PostgreSQL "AutopatcherServerTest.cpp" ${AUTOSRC} ${BZSRC})
-	target_link_libraries(AutopatcherServer_PostgreSQL ${RAKNET_COMMON_LIBS} AutopatcherPostgreRepository)
+	target_link_libraries(AutopatcherServer_PostgreSQL ${SLIKENET_COMMON_LIBS} AutopatcherPostgreRepository)
 	VSUBFOLDER(AutopatcherServer_PostgreSQL "Samples/AutoPatcher/Server/PostgreSQL")
 ELSE(WIN32 AND NOT UNIX)
-	include_directories(${RAKNETHEADERFILES} ./ ${AutopatcherPostgreRepository_SOURCE_DIR} ${PostgreSQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR}) 
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${AutopatcherPostgreRepository_SOURCE_DIR} ${PostgreSQLInterface_SOURCE_DIR} ${Autopatcher_SOURCE_DIR}) 
 	add_executable(AutopatcherServer_PostgreSQL "AutopatcherServerTest.cpp")
-	target_link_libraries(AutopatcherServer_PostgreSQL ${RAKNET_COMMON_LIBS} LibAutopatcher AutopatcherPostgreRepository LibPostgreSQLInterface)
+	target_link_libraries(AutopatcherServer_PostgreSQL ${SLIKENET_COMMON_LIBS} LibAutopatcher AutopatcherPostgreRepository LibPostgreSQLInterface)
 ENDIF(WIN32 AND NOT UNIX)
 
 
