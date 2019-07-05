@@ -1135,7 +1135,7 @@ Lib/prebuild/VS_xxxx/SLikeNet_DLL_[configuration]_[core|ext]_[platform].dll
 to the directory where the C# executable will be built to and rename it to
 SLikeNet.dll.
 On Linux you are required to build a shared library yourself since SLikeNet
-isn't shipped with prebuilds for Linux. Simply follow the steps under 3.7.3.2
+doesn't ship with prebuilds for Linux. Simply follow the steps under 3.7.3.2
 which will take care about building such library and put it into an
 appropriate directory.
 

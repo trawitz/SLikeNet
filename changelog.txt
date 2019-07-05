@@ -111,6 +111,7 @@ Core:
 Building:
   General:
     * fixed compile errors when enabling IPv6 on Linux/OSX (#220)
+    * fixed compile error when enabling OPENSSL on Linux/OSX (#273)
   CrashReporter:
     * fixed compile error when compiling in RAKNET_COMPATIBILITY mode (#223)
   Lobby2:
