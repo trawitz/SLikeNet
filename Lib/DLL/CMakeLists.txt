@@ -18,9 +18,17 @@ FILE(GLOB ALL_COMPATIBILITY_HEADER_SRC ${SLikeNet_SOURCE_DIR}/Source/*.h)
 FILE(GLOB ALL_COMPATIBILITY_HEADER_SRC_2 ${SLikeNet_SOURCE_DIR}/Source/slikenet/*.h)
 FILE(GLOB ALL_CPP_SRCS ${SLikeNet_SOURCE_DIR}/Source/src/*.cpp)
 
-include_directories( ${SLIKENET_INTERNAL_INCLUDE_DIRS} ) 
-
 add_library(SLikeNetDLL SHARED ${ALL_CPP_SRCS} ${ALL_HEADER_SRCS})
+
+#if(NOT (CMAKE_VERSION VERSION_LESS 2.8))
+	# target_include_directories is only supported since CMake 2.8
+#	target_include_directories(SLikeNetLibDLL PUBLIC
+#		$<BUILD_INTERFACE:${SLIKENET_INTERNAL_INCLUDE_DIRS}>
+#		$<INSTALL_INTERFACE:include/slikenet-${SLikeNet_VERSION}>
+#	)
+#else()
+	include_directories(${SLIKENET_INTERNAL_INCLUDE_DIRS})
+#endif()
 
 # set the version number
 set_target_properties(SLikeNetDLL PROPERTIES
@@ -40,10 +48,14 @@ ELSE(WIN32 AND NOT UNIX)
 	)
 ENDIF(WIN32 AND NOT UNIX)
 
-target_link_libraries (SLikeNetDLL ${SLIKENET_LIBRARY_LIBS})
+target_link_libraries(SLikeNetDLL ${SLIKENET_LIBRARY_LIBS})
 IF(NOT WIN32 OR UNIX)
-	install(TARGETS SLikeNetDLL DESTINATION lib)
-	INSTALL(FILES ${ALL_COMPATIBILITY_HEADER_SRC} DESTINATION include/slikenet)
-	INSTALL(FILES ${ALL_COMPATIBILITY_HEADER_SRC_2} DESTINATION include/slikenet/slikenet)
-	INSTALL(FILES ${ALL_HEADER_SRCS} DESTINATION include/slikenet/include/slikenet)
+	configure_file(../../slikenet-config-version.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/slikenet-config-version.cmake @ONLY)
+
+	install(TARGETS SLikeNetDLL EXPORT SLikeNetDLL DESTINATION lib/slikenet-${SLikeNet_VERSION})
+	INSTALL(FILES ${ALL_COMPATIBILITY_HEADER_SRC} DESTINATION include/slikenet-${SLikeNet_VERSION})
+	INSTALL(FILES ${ALL_COMPATIBILITY_HEADER_SRC_2} DESTINATION include/slikenet-${SLikeNet_VERSION}/slikenet/slikenet)
+	INSTALL(FILES ${ALL_HEADER_SRCS} DESTINATION include/slikenet-${SLikeNet_VERSION}/slikenet/include/slikenet)
+	INSTALL(FILES ../../slikenet-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/slikenet-config-version.cmake DESTINATION lib/slikenet-${SLikeNet_VERSION})
+	INSTALL(EXPORT SLikeNetDLL DESTINATION lib/slikenet-${SLikeNet_VERSION})
 ENDIF(NOT WIN32 OR UNIX)

@@ -20,7 +20,7 @@ elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
 endif()
 
 set(SLIKENET_INTERNAL_INCLUDE_DIRS 
-	${SLikeNet_SOURCE_DIR}/Source/include 
+	${SLikeNet_SOURCE_DIR}/Source/include
 	${SLikeNet_SOURCE_DIR}/DependentExtensions/openssl/include/${SLIKENET_OPENSSL_INCLUDE_PREFIX}/release
 	${SLikeNet_SOURCE_DIR}/DependentExtensions
 )

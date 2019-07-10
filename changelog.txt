@@ -55,7 +55,7 @@ Building:
     * change projects to consistently use warning level 4 in all configurations with Visual Studio (#128, #129, #135, #137, #138, #139, #140, #142, #144, #146, #147, #149, #151, #152, #153, #154, #155, #162)
   CMake:
     * changed the project names from RakNetXXXX -> SLikeNetXXXX (#222)
-    * changed default install location for SLikeNet to CMAKE_INSTALL_PREFIX-based include/lib directories (#54 - RAKNET_29, #67 - RAKNET_41)
+    * changed default install location for SLikeNet to CMAKE_INSTALL_PREFIX-based include/lib directories (#54 - RAKNET_29, #67 - RAKNET_41, #222)
     * changed default library names on Linux/OSX to use libslikenet.so / libslikenet.a and create related symlinks (#189 - RAKNET_86)
     * changed install target directory for include files to use include/slikenet (instead of include/raknet) (#222)
     * changed default configuration to build the retail version instead of the release one (#222)
