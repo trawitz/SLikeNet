@@ -6,6 +6,7 @@
 */
 
 #pragma once
+#include <cstddef> // required for size_t
 
 namespace SLNet
 {

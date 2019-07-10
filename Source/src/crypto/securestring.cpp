@@ -11,7 +11,8 @@
 #include "slikenet/assert.h"               // used for assert() (via SLNET_VERIFY)
 #include "slikenet/memoryoverride.h"       // used for OP_NEW_ARRAY
 
-#include <limits> // used for std::numeric_limits
+#include <cstring> // used for std::memcpy
+#include <limits>  // used for std::numeric_limits
 
 namespace SLNet
 {
@@ -116,7 +117,7 @@ namespace SLNet
 						return 0;
 					}
 				}
-				memcpy_s(m_UnencryptedBuffer + m_numBufferUsed, m_UnencryptedBufferSize - m_numBufferUsed, character, charSize);
+				memcpy(m_UnencryptedBuffer + m_numBufferUsed, character, charSize);
 				m_numBufferUsed += charSize;
 
 				// clear the source data

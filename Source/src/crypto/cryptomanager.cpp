@@ -33,8 +33,14 @@ namespace SLNet
 				ERR_load_crypto_strings();
 				OpenSSL_add_all_algorithms();
 
+#ifdef _WIN32
+				// #med - once OpenSSL support for older OpenSSL versions is dropped, just remove this call - newer OpenSSL versions provide proper entropy
+				//        also on Windows platforms - https://security.stackexchange.com/questions/7718/openssl-rand-poll-good-enough
+				// RAND_screen() is only required on Windows - on Linux RAND_poll() will be used (called implicitly by the following RAND_bytes()-call) and
+				// provides OS-specific entropy quality.
 				// #high - replace with EGADS
 				RAND_screen();
+#endif
 
 				if (RAND_bytes(m_sessionKey, EVP_MAX_KEY_LENGTH) == 0) {
 					return false; // failed to initialize the random session key
