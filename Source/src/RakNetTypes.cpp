@@ -779,3 +779,12 @@ unsigned long RakNetGUID::ToUint32( const RakNetGUID &g )
 {
 	return ((unsigned long) (g.g >> 32)) ^ ((unsigned long) (g.g & 0xFFFFFFFF));
 }
+
+namespace SLNet
+{
+	// initialization list
+#ifndef SWIG
+	const SystemAddress UNASSIGNED_SYSTEM_ADDRESS;
+	const RakNetGUID UNASSIGNED_RAKNET_GUID((uint64_t)-1);
+#endif
+}
