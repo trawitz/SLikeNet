@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Copyright (c) 2018-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code is  licensed under the MIT-style license found in the license.txt
  *  file in the root directory of this source tree.
@@ -31,31 +31,24 @@ namespace SLNet
 				}
 			}
 
-			const char* CFileEncrypter::SignData(const char*)
+			const unsigned char* CFileEncrypter::SignData(const unsigned char *data, const size_t dataLength)
 			{
 				return nullptr;
 			}
 
-			bool CFileEncrypter::VerifyData(const char *data, const size_t dataLength, const unsigned char *signature, const size_t signatureLength)
+			const char* CFileEncrypter::SignDataBase64(const unsigned char *data, const size_t dataLength)
 			{
-				EVP_PKEY *const publicKey = EVP_PKEY_new();
-				EVP_PKEY_assign_RSA(publicKey, m_publicKey);
-				EVP_MD_CTX *const rsaVerifyContext = EVP_MD_CTX_create();
+				return nullptr;
+			}
 
-				if (EVP_DigestVerifyInit(rsaVerifyContext, nullptr, EVP_sha512(), nullptr, publicKey) <= 0) {
-					return false;
-				}
-				if (EVP_DigestVerifyUpdate(rsaVerifyContext, data, dataLength) <= 0) {
-					return false;
-				}
-
-				// #high - review const_cast
-				const int authenticStatus = EVP_DigestVerifyFinal(rsaVerifyContext, const_cast<unsigned char*>(signature), signatureLength);
-				EVP_MD_CTX_cleanup(rsaVerifyContext);
-				if (authenticStatus == 1) {
-					return true;
-				}
+			bool CFileEncrypter::VerifyData(const unsigned char *data, const size_t dataLength, const unsigned char *signature, const size_t signatureLength)
+			{
 				return false;
+			}
+
+			bool CFileEncrypter::VerifyDataBase64(const unsigned char *data, const size_t dataLength, const char *signature, const size_t signatureLength)
+			{
+					return false;
 			}
 
 			const char* CFileEncrypter::SetPublicKey(const char* publicKey, size_t publicKeyLength)

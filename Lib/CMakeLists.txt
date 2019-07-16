@@ -11,17 +11,8 @@
 
 cmake_minimum_required(VERSION 2.6)
 
-if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    # 64 bits
-   set(SLIKENET_OPENSSL_INCLUDE_PREFIX x64)
-elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
-    # 32 bits
-   set(SLIKENET_OPENSSL_INCLUDE_PREFIX x86)
-endif()
-
 set(SLIKENET_INTERNAL_INCLUDE_DIRS 
 	${SLikeNet_SOURCE_DIR}/Source/include
-	${SLikeNet_SOURCE_DIR}/DependentExtensions/openssl/include/${SLIKENET_OPENSSL_INCLUDE_PREFIX}/release
 	${SLikeNet_SOURCE_DIR}/DependentExtensions
 )
 

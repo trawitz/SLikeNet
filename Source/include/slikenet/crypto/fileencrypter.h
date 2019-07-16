@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Copyright (c) 2018-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code is  licensed under the MIT-style license found in the license.txt
  *  file in the root directory of this source tree.
@@ -34,9 +34,11 @@ namespace SLNet
 			
 				// signing methods
 			public:
-				const char* SignData(const char *data);
+				const unsigned char* SignData(const unsigned char *data, const size_t dataLength) override;
+				const char* SignDataBase64(const unsigned char *data, const size_t dataLength) override;
 				// #med reconsider/review interface here (char / unsigned char)
-				bool VerifyData(const char *data, const size_t dataLength, const unsigned char *signature, const size_t signatureLength);
+				bool VerifyData(const unsigned char *data, const size_t dataLength, const unsigned char *signature, const size_t signatureLength) override;
+				bool VerifyDataBase64(const unsigned char *data, const size_t dataLength, const char *signature, const size_t signatureLength) override;
 
 				// internal helpers
 			private:
