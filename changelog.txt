@@ -18,7 +18,7 @@ version 0.2.0 (xx-xx-xxxx xx:xx UTC)
 General:
   * extended supported compilers to VS 2017 15.4.1 (#163)
   * several smaller changes, fixes, and code cleanup (#130, #136, #181 - SLNET_28/SLNET_30)
-  * documentation updates (#160, #222, #257)
+  * documentation updates (#160, #189, #222, #257)
 Core:
   HTTPConnection2:
     * fixed memory leak upon destruction (#259 - SLNET_44)
@@ -60,9 +60,9 @@ Building:
     * changed install target directory for include files to use include/slikenet (instead of include/raknet) (#222)
     * changed default configuration to build the retail version instead of the release one (#222)
     * added project version number (#222)
-    * corrected SLIKENET_GENERATE_INCLUDE_ONLY_DIR to copy over the correct headers rather than just the redirect ones (#222)
     * renamed options from RAKENET_XXXX -> SLIKENET_XXXX (#222)
     * removed obsolete RAKNET_INCLUDE_DIRS variable (#130)
+	* removed obsolete RAKNET_GENERATE_INCLUDE_ONLY_DIR option (#222)
     * small tweaks/improvements to CMake files (#130, #222)
   iOS:
     * updated file name reference in XCode project (#188 - RAKNET_84)

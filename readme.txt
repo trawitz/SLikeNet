@@ -869,7 +869,7 @@ want to build SLikeNet yourself:
    VS2017: Select "OK" in the pop-up dialog: "Retarget Projects"
 3. Adjust NativeFeatureIncludesOverrides.h and define any optional macros to
    enable (or disable) certain features
-4. Select the correct configuration (Debug, Release or Retail; with or without
+4. Select the correct configuration (Debug, Release, or Retail; with or without
    Unicode support) and the correct machine type (Win32 or x64)
 5. Build the appropriate project:
    - DLL: to build SLikeNet as a dynamic link library
