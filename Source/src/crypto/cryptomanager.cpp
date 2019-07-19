@@ -123,7 +123,7 @@ namespace SLNet
 				}
 				RakAssert(static_cast<size_t>(bytesWritten1) <= inOutBufferSize);
 				int bytesWritten2;
-				if (EVP_DecryptFinal_ex(&m_decryptionContext, outBuffer, &bytesWritten2) == 0) {
+				if (EVP_DecryptFinal_ex(&m_decryptionContext, outBuffer + bytesWritten1, &bytesWritten2) == 0) {
 					return false; // failed final decryption step
 				}
 				RakAssert(static_cast<size_t>(bytesWritten1) + static_cast<size_t>(bytesWritten2) <= inOutBufferSize);
