@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Copyright (c) 2018-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code is  licensed under the MIT-style license found in the license.txt
  *  file in the root directory of this source tree.
@@ -15,10 +15,16 @@ namespace SLNet
 	{
 		namespace Crypto
 		{
-			// #high - change interface --- use RakString?
-			IFileEncrypter* Factory::ConstructFileEncrypter(const CSecureString& privateKey, const char *publicKey, size_t publicKeyLength)
+			IFileEncrypter* Factory::ConstructFileEncrypter(const char *publicKey, size_t publicKeyLength)
 			{
-				return new CFileEncrypter(privateKey, publicKey, publicKeyLength);
+				return new CFileEncrypter(publicKey, publicKeyLength);
+			}
+
+			// #high - change interface --- use RakString?
+			// #high - reconsider non-const CSecureString (for private key)
+			IFileEncrypter* Factory::ConstructFileEncrypter(const char *publicKey, size_t publicKeyLength, const char *privateKey, size_t privateKeyLength, CSecureString& privateKeyPassword)
+			{
+				return new CFileEncrypter(publicKey, publicKeyLength, privateKey, privateKeyLength, privateKeyPassword);
 			}
 		}
 	}

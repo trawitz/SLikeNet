@@ -6,12 +6,9 @@
  */
 #pragma once
 
-#include "ifileencrypter.h"   // used for Crypto::IFileEncrypter
-#include "securestring.h"     // used for Crypto::CSecureString
-#include "../RakString.h"     // used for RakString
+#include "ifileencrypter.h"    // used for Crypto::IFileEncrypter
+#include "securestring.h"      // used for Crypto::CSecureString
  #include <openssl/ossl_typ.h> // used for RSA
-
-//struct RSA;
 
 namespace SLNet
 {
@@ -22,14 +19,19 @@ namespace SLNet
 			class CFileEncrypter : public IFileEncrypter
 			{
 				// member variables
-				RSA* m_privateKey;
-				RSA* m_publicKey;
+				RSA *m_privateKey;
+				EVP_PKEY *m_privatePKey;
+				RSA *m_publicKey;
+				EVP_PKEY *m_publicPKey;
+				unsigned char m_sigBuffer[1024];
+				char m_sigBufferBase64[1369]; // 1369 = 1368 (size of base64-encoded 1k signature which is 1024 / 3 * 4 (representing 1023 bytes) + 4 bytes for the last byte) + 1 byte for trailing \0-terminator
 
 				// constructor
 			public:
 				// #high - drop the default ctor again (provide load from file instead incl. routing through customized file open handlers)
-				CFileEncrypter() = default;
-				CFileEncrypter(const CSecureString &privateKey, const char *publicKey, size_t publicKeyLength);
+				CFileEncrypter();
+				CFileEncrypter(const char *publicKey, size_t publicKeyLength);
+				CFileEncrypter(const char *publicKey, size_t publicKeyLength, const char *privateKey, size_t privateKeyLength, CSecureString &password);
 				~CFileEncrypter();
 			
 				// signing methods
@@ -42,6 +44,8 @@ namespace SLNet
 
 				// internal helpers
 			private:
+				static int PasswordCallback(char *buffer, int bufferSize, int, void *password);
+				const char* SetPrivateKey(const char *privateKey, size_t privateKeyLength, CSecureString &password);
 				const char* SetPublicKey(const char *publicKey, size_t publicKeyLength);
 			};
 		}
