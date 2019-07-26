@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -528,7 +528,7 @@ namespace SLNet
 		inline BitSize_t GetReadOffset( void ) const {return readOffset;}
 
 		/// \brief Sets the read bit index
-		void SetReadOffset( const BitSize_t newReadOffset ) {readOffset=newReadOffset;}
+		void SetReadOffset(const BitSize_t newReadOffset);
 
 		/// \brief Returns the number of bits left in the stream that haven't been read
 		inline BitSize_t GetNumberOfUnreadBits( void ) const {return numberOfBitsUsed - readOffset;}
@@ -611,7 +611,7 @@ namespace SLNet
 		/// can also be used to force coalesced bitstreams to start on byte
 		/// boundaries so so WriteAlignedBits and ReadAlignedBits both
 		/// calculate the same offset when aligning.
-		inline void AlignReadToByteBoundary( void ) {readOffset += 8 - ( (( readOffset - 1 ) & 7 ) + 1 );}
+		inline void AlignReadToByteBoundary(void);
 
 		/// \brief Read \a numberOfBitsToRead bits to the output source.
 		/// \details alignBitsToRight should be set to true to convert internal

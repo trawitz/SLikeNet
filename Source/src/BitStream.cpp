@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -272,10 +272,8 @@ bool BitStream::Read( char* outByteArray, const unsigned int numberOfBytes )
 		readOffset += numberOfBytes << 3;
 		return true;
 	}
-	else
-	{
-		return ReadBits( ( unsigned char* ) outByteArray, numberOfBytes * 8 );
-	}
+
+	return ReadBits( ( unsigned char* ) outByteArray, numberOfBytes * 8 );
 }
 
 // Sets the read pointer back to the beginning of your data.
@@ -532,6 +530,11 @@ void BitStream::WriteCompressed( const unsigned char* inByteArray,
 		Write( b );
 		WriteBits( inByteArray + currentByte, 8, true );
 	}
+}
+
+void BitStream::AlignReadToByteBoundary()
+{
+	readOffset += 8 - ( (( readOffset - 1 ) & 7 ) + 1 );
 }
 
 // Read numberOfBitsToRead bits to the output source
@@ -937,6 +940,11 @@ void BitStream::PrintHex( void ) const
 	char out[2048];
 	PrintHex(out, 2048);
 	RAKNET_DEBUG_PRINTF("%s", out);
+}
+
+void BitStream::SetReadOffset(const BitSize_t newReadOffset)
+{
+	readOffset = newReadOffset;
 }
 
 // Exposes the data for you to look at, like PrintBits does.
