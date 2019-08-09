@@ -1,6 +1,6 @@
-SLikeNet™ 0.1.2
+SLikeNet™ 0.1.3
 ===============
-Copyright © 2016-2018 SLikeSoft™ UG (haftungsbeschränkt)
+Copyright © 2016-2019 SLikeSoft™ UG (haftungsbeschränkt)
 
 Part of the documentation in this readme file was taken from RakNet 4.082
 readme files. These sections are marked with [partially copied from RakNet].
