@@ -611,7 +611,7 @@ namespace SLNet
 		/// can also be used to force coalesced bitstreams to start on byte
 		/// boundaries so so WriteAlignedBits and ReadAlignedBits both
 		/// calculate the same offset when aligning.
-		inline void AlignReadToByteBoundary(void);
+		void AlignReadToByteBoundary(void);
 
 		/// \brief Read \a numberOfBitsToRead bits to the output source.
 		/// \details alignBitsToRight should be set to true to convert internal
