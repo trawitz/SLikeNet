@@ -512,7 +512,7 @@ bool SystemAddress::SetBinaryAddress(const char *str, char portDelineator)
 		ip[0] = '\0';
 
 		// copy the plain hostname (excluding the (optional) port part)
-		char* hostname = OP_NEW_ARRAY<char>(delimiterPos + 1, _FILE_AND_LINE_);
+		char* hostname = OP_NEW_ARRAY<char>(static_cast<int>(delimiterPos + 1), _FILE_AND_LINE_);
 		strncpy_s(hostname, delimiterPos + 1, str, delimiterPos);
 		RakNetSocket2::DomainNameToIP(hostname, ip);
 		OP_DELETE_ARRAY(hostname, _FILE_AND_LINE_);
