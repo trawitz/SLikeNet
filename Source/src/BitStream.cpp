@@ -181,6 +181,9 @@ void BitStream::Write( BitStream *bitStream)
 }
 void BitStream::Write( BitStream *bitStream, BitSize_t numberOfBits )
 {
+	if (numberOfBits > bitStream->GetNumberOfUnreadBits())
+		return;
+
 	AddBitsAndReallocate( numberOfBits );
 	BitSize_t numberOfBitsMod8;
 
@@ -194,7 +197,7 @@ void BitStream::Write( BitStream *bitStream, BitSize_t numberOfBits )
 		numberOfBitsUsed+=BYTES_TO_BITS(numBytes);
 	}
 
-	while (numberOfBits-->0 && bitStream->readOffset + 1 <= bitStream->numberOfBitsUsed)
+	while (numberOfBits-->0)
 	{
 		numberOfBitsMod8 = numberOfBitsUsed & 7;
 		if ( numberOfBitsMod8 == 0 )
