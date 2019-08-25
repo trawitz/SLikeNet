@@ -1307,7 +1307,7 @@ namespace SLNet
 	template <>
 		inline bool BitStream::Read(bool &outTemplateVar)
 	{
-		if ( readOffset + 1 > numberOfBitsUsed )
+		if (GetNumberOfUnreadBits() == 0)
 			return false;
 
 		if ( data[ readOffset >> 3 ] & ( 0x80 >> ( readOffset & 7 ) ) )   // Is it faster to just write it out here?
@@ -1357,7 +1357,7 @@ namespace SLNet
 	inline bool BitStream::Read(uint24_t &outTemplateVar)
 	{
 		AlignReadToByteBoundary();
-		if ( readOffset + 3*8 > numberOfBitsUsed )
+		if (GetNumberOfUnreadBits() < 3*8)
 			return false;
 
 		if (IsBigEndian()==false)
