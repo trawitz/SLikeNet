@@ -84,6 +84,7 @@ Building:
 
 version 0.1.3 (23-08-2019 21:00 UTC)
 *** This release resolves 2 user reported issue (2 completely)
+*** This release contains security fixes - overall CVSS score: 7.1
 General:
   * several smaller changes, fixes, and code cleanup (#236, #238, #269)
   * documentation updates (#269)
@@ -92,13 +93,13 @@ Core:
   General:
     * fixed NonNumericHostString() incorrectly identifying numeric as non-numeric addresses (#262)
   BitStream:
-    * SECURITY: fixed BitStream::GetNumberOfUnreadBits() returning an incorrect value, if the readOffset exceeds the number of used bits (#278)
-    * SECURITY: fixed multiple BitStream::ReadXXX()-methods causing buffer overruns when reading data from the stream (#267, #272)
-    * SECURITY: fixed BitStream::Write() version causing a buffer overrun when reading data from the provided stream (#268)
+    * SECURITY: fixed BitStream::GetNumberOfUnreadBits() returning an incorrect value, if the readOffset exceeds the number of used bits (#278 - CVSS score: 7.1)
+    * SECURITY: fixed multiple BitStream::ReadXXX()-methods causing buffer overruns when reading data from the stream (#267, #272 - CVSS score: 7.1)
+    * SECURITY: fixed BitStream::Write() version causing a buffer overrun when reading data from the provided stream (#268 - CVSS score: 7.1)
   FullyConnectedMesh2:
     * fixed incorrect delete in FullyConnectedMesh2::Clear() when using a custom allocator (#249)
   PacketizedTCP:
-    * SECURITY: fixed buffer overrun in PacketizedTCP::SendList() resulting in potential leaking arbitrary data (#221)
+    * SECURITY: fixed buffer overrun in PacketizedTCP::SendList() resulting in potential leaking arbitrary data (#221 - CVSS score: n/a)
   RakNetSocket2:
     * fixed failure in RNS2_Berkley::BindSharedIPV4() always reporting an "unknown" error on OSX (#258)
     * fixed RakNetSocket2::DomainNameToIP() failing to resolve the domain name (#264)
