@@ -1,5 +1,6 @@
 var NAVTREEINDEX20 =
 {
+"de/d3d/class_s_l_net_1_1_string_compressor.xhtml#a44be8cc8a469a28085a7502650040459":[3,0,1,64,5],
 "de/d3d/class_s_l_net_1_1_string_compressor.xhtml#a5ff01d168653fbd47d917e7ffd3675cd":[3,0,1,64,3],
 "de/d3d/class_s_l_net_1_1_string_compressor.xhtml#aa237e63b4793abc8e6bb0e6f1b744f50":[3,0,1,64,2],
 "de/d3d/class_s_l_net_1_1_string_compressor.xhtml#acbd6add1c51c15fbbb616ce17b527aab":[3,0,1,64,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX20 =
 "de/df9/class_data_structures_1_1_memory_pool.xhtml#afe2bf4d4b602697e6d91c7c8ef774e7c":[3,0,0,13,1,4],
 "de/df9/class_data_structures_1_1_memory_pool.xhtml#d0/d3b/struct_data_structures_1_1_memory_pool_1_1_page":[3,0,0,13,1],
 "de/df9/class_data_structures_1_1_memory_pool.xhtml#d4/d3e/struct_data_structures_1_1_memory_pool_1_1_memory_with_page":[3,0,0,13,0],
-"df/d02/class_s_l_net_1_1_incremental_read_interface.xhtml":[3,0,1,21],
-"df/d02/class_s_l_net_1_1_incremental_read_interface.xhtml#a3c77311efc0ce83c6f48eab70535ece4":[3,0,1,21,2]
+"df/d02/class_s_l_net_1_1_incremental_read_interface.xhtml":[3,0,1,21]
 };
