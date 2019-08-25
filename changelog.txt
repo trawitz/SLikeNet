@@ -97,6 +97,8 @@ Core:
     * SECURITY: fixed BitStream::Write() version causing a buffer overrun when reading data from the provided stream (#268)
   FullyConnectedMesh2:
     * fixed incorrect delete in FullyConnectedMesh2::Clear() when using a custom allocator (#249)
+  PacketizedTCP:
+    * SECURITY: fixed buffer overrun in PacketizedTCP::SendList() resulting in potential leaking arbitrary data (#221)
   RakNetSocket2:
     * fixed failure in RNS2_Berkley::BindSharedIPV4() always reporting an "unknown" error on OSX (#258)
     * fixed RakNetSocket2::DomainNameToIP() failing to resolve the domain name (#264)
