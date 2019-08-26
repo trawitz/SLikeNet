@@ -1,7 +1,13 @@
 //
-// This file was taken from RakNet 4.082 without any modifications.
+// This file was taken from RakNet 4.082.
 // Please see licenses/RakNet license.txt for the underlying license and related copyright.
 //
+//
+//
+// Modified work: Copyright (c) 2018, SLikeSoft UG (haftungsbeschränkt)
+//
+// This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
+// license found in the license.txt file in the root directory of this source tree.
 
 //----------Ignores----------------
 //This file specifies things that should be ignored by Swig
@@ -336,6 +342,7 @@ IGNORERAKPEERANDINTERFACE(SetIncomingDatagramEventHandler( bool (*_incomingDatag
 //Operators
 //These need te be handled manually or not at all
 %ignore operator const char*;
+%ignore operator wchar_t*;
 %ignore operator uint32_t;
 %ignore operator &; //Not overloadable in C#
 %ignore operator <<;//Doesn't work the same in C#, only usable with int

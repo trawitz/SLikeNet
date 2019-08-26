@@ -1,5 +1,6 @@
 var NAVTREEINDEX12 =
 {
+"d8/dbe/struct_s_l_net_1_1_system_address.xhtml#aabe9a3741607e1e6772cae6ed1443ef1":[3,0,1,74,21],
 "d8/dbe/struct_s_l_net_1_1_system_address.xhtml#aac702cdf872b7c57376b2e379845c150":[3,0,1,74,33],
 "d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47":[3,0,1,74,31],
 "d8/dbe/struct_s_l_net_1_1_system_address.xhtml#abebf47196ae436746197098514854e81":[3,0,1,74,18],
@@ -248,6 +249,5 @@ var NAVTREEINDEX12 =
 "d9/d15/class_s_l_net_1_1_variable_list_delta_tracker.xhtml#a804f6b8ba2b1fef974b6f7ddc55b7b94":[3,0,1,80,7],
 "d9/d15/class_s_l_net_1_1_variable_list_delta_tracker.xhtml#a853a9e9d3765a34dd78cb271e2a8b7be":[3,0,1,80,4],
 "d9/d15/class_s_l_net_1_1_variable_list_delta_tracker.xhtml#aaefde87f8abe144f0fd0a5585e959923":[3,0,1,80,1],
-"d9/d15/class_s_l_net_1_1_variable_list_delta_tracker.xhtml#acbbad9fa1cb7e3aae24e4e559f3e1b2a":[3,0,1,80,3],
-"d9/d15/class_s_l_net_1_1_variable_list_delta_tracker.xhtml#adf4e9975127adc830f27bd3ee1cb2d07":[3,0,1,80,10]
+"d9/d15/class_s_l_net_1_1_variable_list_delta_tracker.xhtml#acbbad9fa1cb7e3aae24e4e559f3e1b2a":[3,0,1,80,3]
 };

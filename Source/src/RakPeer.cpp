@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -2574,22 +2574,17 @@ int RakPeer::GetMTUSize( const SystemAddress target ) const
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 unsigned int RakPeer::GetNumberOfAddresses( void )
 {
-
-	if (IsActive()==false)
-	{
+	if (IsActive() == false) {
 		FillIPList();
 	}
 
-	int i = 0;
+	for (int i = 0; i < MAXIMUM_NUMBER_OF_INTERNAL_IDS && ipList[i] != UNASSIGNED_SYSTEM_ADDRESS; i++) {
+		if (ipList[i] == UNASSIGNED_SYSTEM_ADDRESS) {
+			return i; // first unassigned address entry found -> end of address list reached
+		}
+	}
 
-	while ( ipList[ i ]!=UNASSIGNED_SYSTEM_ADDRESS )
-		i++;
-
-	return i;
-
-
-
-
+	return MAXIMUM_NUMBER_OF_INTERNAL_IDS;
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

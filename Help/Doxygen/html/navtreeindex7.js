@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"d4/de2/group___n_a_t___t_y_p_e___d_e_t_e_c_t_i_o_n___g_r_o_u_p.xhtml#af2ad4880cccf291e1f6589bd4d6507dd":[1,0,0,5,1,9],
 "d4/de2/group___n_a_t___t_y_p_e___d_e_t_e_c_t_i_o_n___g_r_o_u_p.xhtml#af42a0d8da81122a6197403d57a8ae674":[1,0,0,5,0,12],
 "d4/de2/group___n_a_t___t_y_p_e___d_e_t_e_c_t_i_o_n___g_r_o_u_p.xhtml#d2/d32/class_s_l_net_1_1_nat_type_detection_client":[1,0,0,5,0],
 "d4/de2/group___n_a_t___t_y_p_e___d_e_t_e_c_t_i_o_n___g_r_o_u_p.xhtml#da/d80/struct_s_l_net_1_1_nat_type_detection_server_1_1_n_a_t_detection_attempt":[1,0,0,5,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "d5/dbf/class_s_l_net_1_1_rak_peer.xhtml#a3d64adb5812fb891bb03b9fd9c331f97":[3,0,1,33,157],
 "d5/dbf/class_s_l_net_1_1_rak_peer.xhtml#a3e082e4a011aae7dd8b8451771baa215":[3,0,1,33,209],
 "d5/dbf/class_s_l_net_1_1_rak_peer.xhtml#a3e1cda7f2e6b523902b6db6c88ca4e38":[3,0,1,33,108],
-"d5/dbf/class_s_l_net_1_1_rak_peer.xhtml#a4272ca10738749fcc2a1e3b31e048a70":[3,0,1,33,68],
-"d5/dbf/class_s_l_net_1_1_rak_peer.xhtml#a43bd8073fa9ad174ace8c3f476f73b7d":[3,0,1,33,164]
+"d5/dbf/class_s_l_net_1_1_rak_peer.xhtml#a4272ca10738749fcc2a1e3b31e048a70":[3,0,1,33,68]
 };

@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">SLikeNet
-   &#160;<span id="projectnumber">0.1.2</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
   </td>
  </tr>
@@ -544,36 +544,43 @@ $(document).ready(function(){initNavTree('d0/dea/_rak_w_string_8cpp_source.xhtml
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;}</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="comment">SLNet::BitStream bsTest;</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="comment">SLNet::RakWString testString(&quot;cat&quot;), testString2;</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="comment">testString = &quot;Hllo&quot;;</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="comment">testString = L&quot;Hello&quot;;</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">testString += L&quot; world&quot;;</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="comment">testString2 += testString2;</span></div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="comment">SLNet::RakWString ts3(L&quot; from here&quot;);</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="comment">testString2+=ts3;</span></div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="comment">SLNet::RakWString ts4(L&quot; 222&quot;);</span></div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">testString2=ts4;</span></div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="comment">SLNet::RakString rs(&quot;rakstring&quot;);</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="comment">testString2+=rs;</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="comment">testString2=rs;</span></div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="comment">bsTest.Write(L&quot;one&quot;);</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="comment">bsTest.Write(testString2);</span></div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="comment">bsTest.SetReadOffset(0);</span></div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="comment">SLNet::RakWString ts5, ts6;</span></div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="comment">wchar_t buff[99];</span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="comment">wchar_t *wptr = (wchar_t*)buff;</span></div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="comment">bsTest.Read(wptr);</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="comment">bsTest.Read(ts5);</span></div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno"><a class="code" href="../../d5/dc1/wstring_8h.xhtml#a54c059087d9c04622dfb9f78d441affa">  439</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d8/d91/class_s_l_net_1_1_rak_w_string.xhtml" title="String class for Unicode.">SLNet::RakWString</a> <a class="code" href="../../dd/d5f/_rak_string_8cpp.xhtml#a625af79cc78a3921cfa6a7116754bd6c">operator+</a>(<span class="keyword">const</span> <a class="code" href="../../d8/d91/class_s_l_net_1_1_rak_w_string.xhtml" title="String class for Unicode.">SLNet::RakWString</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="../../d8/d91/class_s_l_net_1_1_rak_w_string.xhtml" title="String class for Unicode.">SLNet::RakWString</a> &amp;rhs)</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;{</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <a class="code" href="../../d8/d91/class_s_l_net_1_1_rak_w_string.xhtml" title="String class for Unicode.">SLNet::RakWString</a> returnvalue(lhs);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    returnvalue += rhs;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keywordflow">return</span> returnvalue;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="comment">SLNet::BitStream bsTest;</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="comment">SLNet::RakWString testString(&quot;cat&quot;), testString2;</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">testString = &quot;Hllo&quot;;</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="comment">testString = L&quot;Hello&quot;;</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="comment">testString += L&quot; world&quot;;</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="comment">testString2 += testString2;</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="comment">SLNet::RakWString ts3(L&quot; from here&quot;);</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="comment">testString2+=ts3;</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="comment">SLNet::RakWString ts4(L&quot; 222&quot;);</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="comment">testString2=ts4;</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="comment">SLNet::RakString rs(&quot;rakstring&quot;);</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="comment">testString2+=rs;</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="comment">testString2=rs;</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="comment">bsTest.Write(L&quot;one&quot;);</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="comment">bsTest.Write(testString2);</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="comment">bsTest.SetReadOffset(0);</span></div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="comment">SLNet::RakWString ts5, ts6;</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="comment">wchar_t buff[99];</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="comment">wchar_t *wptr = (wchar_t*)buff;</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="comment">bsTest.Read(wptr);</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="comment">bsTest.Read(ts5);</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="comment">*/</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_74389ed8173ad57b461b9d623a1f3867.xhtml">Source</a></li><li class="navelem"><a class="el" href="../../dir_d1eb22c2ecfd8b50f59e9cbaf8260105.xhtml">src</a></li><li class="navelem"><a class="el" href="../../d0/dea/_rak_w_string_8cpp.xhtml">RakWString.cpp</a></li>
-    <li class="footer">Generated on Sat May 5 2018 17:33:26 for SLikeNet by
+    <li class="footer">Generated on Wed Aug 14 2019 22:09:47 for SLikeNet by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

@@ -1,4 +1,7 @@
-﻿#This has been modified fron the original
+# This file was taken from RakNet 4.082 without modifications.
+# Please see licenses/RakNet license.txt for the underlying license and related copyright.
+
+#This has been modified fron the original
 
 include(${RakNet_SOURCE_DIR}/CmakeIncludes/Ogre3D/PreprocessorUtils.cmake)
 include(${RakNet_SOURCE_DIR}/CmakeIncludes/Ogre3D/FindPkgMacros.cmake)

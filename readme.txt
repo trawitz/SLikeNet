@@ -1,6 +1,6 @@
-SLikeNet™ 0.1.2
+SLikeNet™ 0.1.3
 ===============
-Copyright © 2016-2018 SLikeSoft™ UG (haftungsbeschränkt)
+Copyright © 2016-2019 SLikeSoft™ UG (haftungsbeschränkt)
 
 Part of the documentation in this readme file was taken from RakNet 4.082
 readme files. These sections are marked with [partially copied from RakNet].
@@ -140,32 +140,32 @@ Table of Contents
    5.45    UDP Forwarder
    5.46    WinPhone8
    6.      Help and Support
-   6.1     Documenation
+   6.1     Documentation
    6.2     Contact Information and Support
    7.      A word on licensing
    7.1     SLikeNet licensing (core and extended)
    7.2     Licensed Code
-   7.2.1    (core) RakNet
-   7.2.2    (core) DR_SHA1.cpp/.h (SHA-1 algorithm - version 2.1)
-   7.2.3    (core) Rand.cpp (Mersenne Twister random number generator MT19937)
-   7.2.4    (core) KBhit.h
-   7.2.5    (core) FindBoost.cmake
-   7.2.6    (DependentExtension/Autopatcher) ApplyPatch.cpp, CreatePatch.cpp
-   7.2.7    (DependentExtension/DXTCompressor) OpenGLWindow.hpp
-   7.2.8    (DependentExtension/IrrlichtDemo) FindIrrlicht.cmake,
-            FindIrrKlang.cmake
-   7.2.9    (DependentExtension/IrrlichtDemo) CDemo.cpp/.h, CMainMenu.cpp/.h,
-            main.cpp
-   7.2.10   (DependentExtension/speex related) FindSpeex.cmake,
-            FindSpeexDSP.cmake
-   7.2.11   (DependentExtension/Swig) arrays_csharp.i
-   7.2.12   (Samples/nacl_sdk) httpd.py
-   7.2.13   (Samples/Ogre3D related) FindOGRE.cmake, FindOIS.cmake,
-            FindPkgMacros.cmake, PreprocessorUtils.cmake
-   7.2.14   (Samples/Ogre3D related) BspCollision.cpp
-   8.       Donations
-   9.       Thanks / Acknowledgments
-   10.      Trademark Notes / Affiliation Statement
+   7.2.1   (core) RakNet
+   7.2.2   (core) DR_SHA1.cpp/.h (SHA-1 algorithm - version 2.1)
+   7.2.3   (core) Rand.cpp (Mersenne Twister random number generator MT19937)
+   7.2.4   (core) KBhit.h
+   7.2.5   (core) FindBoost.cmake
+   7.2.6   (DependentExtension/Autopatcher) ApplyPatch.cpp, CreatePatch.cpp
+   7.2.7   (DependentExtension/DXTCompressor) OpenGLWindow.hpp
+   7.2.8   (DependentExtension/IrrlichtDemo) FindIrrlicht.cmake,
+           FindIrrKlang.cmake
+   7.2.9   (DependentExtension/IrrlichtDemo) CDemo.cpp/.h, CMainMenu.cpp/.h,
+           main.cpp
+   7.2.10  (DependentExtension/speex related) FindSpeex.cmake,
+           FindSpeexDSP.cmake
+   7.2.11  (DependentExtension/Swig) arrays_csharp.i
+   7.2.12  (Samples/nacl_sdk) httpd.py
+   7.2.13  (Samples/Ogre3D related) FindOGRE.cmake, FindOIS.cmake,
+           FindPkgMacros.cmake, PreprocessorUtils.cmake
+   7.2.14  (Samples/Ogre3D related) BspCollision.cpp
+   8.      Donations
+   9.      Thanks / Acknowledgments
+   10.     Trademark Notes / Affiliation Statement
 
 
 
@@ -259,8 +259,8 @@ beta test phase of at least 2 weeks. During that period we will only fix
 regressions introduced in the new versions. Anything else will be postponed and
 scheduled for a following version. If there is a regression fix during the beta
 phase, we will release a new beta version and restart the 2 week test period.
-The version numbering will be x.y.z-beta.d where d begins with 1 and is incremented
-by 1 for each successive beta release of the same version.
+The version numbering will be x.y.z-beta.d where d begins with 1 and is
+incremented by 1 for each successive beta release of the same version.
 
 1.2.4 1.x.y releases
 The 1.x.y releases will ensure API, ABI, and protocol compatibility with RakNet
@@ -857,7 +857,7 @@ want to build SLikeNet yourself:
    VS2017: Select "OK" in the pop-up dialog: "Retarget Projects"
 3. Adjust NativeFeatureIncludesOverrides.h and define any optional macros to
    enable (or disable) certain features
-4. Select the correct configuration (Debug, Release or Retail; with or without
+4. Select the correct configuration (Debug, Release, or Retail; with or without
    Unicode support) and the correct machine type (Win32 or x64)
 5. Build the appropriate project:
    - DLL: to build SLikeNet as a dynamic link library
@@ -952,19 +952,19 @@ using the libraries which are noteworthy:
 1. (except for RakNet compatibility mode) You should include SLikeNet headers
    via <slikenet/foobar.h> where RakNet required you to include only
    <foobar.h>.
-2. (except for RakNet compatibility mode) You need to use the SLikeNet
-   namespace where previously you used the RakNet namespace.
+2. (except for RakNet compatibility mode) You need to use the SLNet namespace
+   where previously you used the RakNet namespace.
 3. RAKNET_VERSION, RAKNET_VERSION_NUMBER, RAKNET_VERSION_NUMBER_INT, and
    RAKNET_DATE were kept due to backwards compatibility with RakNet but were
-   updated to 4.082 and 7/26/2017 respectively and will stay at these values for
-   all SLikeNet 0.x.x/1.x.x releases.
+   updated to 4.082 and 7/26/2017 respectively and will stay at these values
+   for all SLikeNet 0.x.x/1.x.x releases.
    In order to distinguish between different SLikeNet versions, you should use
    the newly introduced SLIKENET_VERSION, SLIKNET_VERSION_NUMBER,
    SLIKENET_VERSION_NUMBER_INT, and SLIKNET_DATE macros.
 
 3.5.2 Retail configuration
 RakNet only shipped with a debug and a release configuration while SLikeNet
-ships 3 different configurations: debug, release, and retail.
+ships with 3 different configurations: debug, release, and retail.
 The debug configuration provides full debugging support without any kind of
 optimization. The focus of this configuration lies in debugging capabilities
 (and not on performance). This is in principle the same what RakNet provided.
@@ -1004,7 +1004,6 @@ being used/called from the library, you will have to adjust your overrides to
 overwrite the new variants instead.
 
 3.6 Configuring SLikeNet
-
 SLikeNet uses macros to control certain settings. The overview of the available
 settings can be found in the accompanying Doxygen generated documentation
 (refer to the documentation regarding defines.h and NativeFeatureIncludes.h).
@@ -1012,7 +1011,6 @@ These "settings" can be redefined in the corresponding override-headers
 (definesoverrides.h / NativeFeatureIncludeOverrides.h).
 
 3.6.1 Security relevant settings
-
 When using SLikeNet to transfer files between peers (f.e. via the AutoPatcher
 or directly via FileListTransfer), SLikeNet allocates a single memory chunk to
 retrieve the incoming file. For rather large files (up to 4 GiB), this can
@@ -1217,7 +1215,7 @@ extensions:
       - SQLite (see 2.4.20)
 
 4.12 Swig / DLL_Swig
-   Description: Generates a C# interface for the SLikeNet DLL.
+   Description: Generates C# bindings for SLikeNet.
    Dependencies:
       - SWIG (see 2.4.22)
 
@@ -1316,7 +1314,8 @@ overview of all the samples:
       - the server acts as host, if connecting to own IP
       - the server acts as host and points the domain name to our own IP, if
         connecting to another system fails
-      - the server treats any already existing system on the domain name as host
+      - the server treats any already existing system on the domain name as
+        host
    For the host connection the TwoWayAuthentication plugin is used to validate
    that the system is actually a host by checking a pre-designated password.
    Using a local CloudClient instance, querying the cloud server. The retrieved
@@ -1754,7 +1753,7 @@ overview of all the samples:
 
 6. Help and Support
 
-6.1 Documenation
+6.1 Documentation
 This readme.txt file contains the most up-to-date information and supersedes
 any older documentation, in case of contradicting statements.
 The changelog.txt covers the changes of the different releases.

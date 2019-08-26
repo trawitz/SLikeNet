@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">SLikeNet
-   &#160;<span id="projectnumber">0.1.2</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
   </td>
  </tr>
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('d7/db2/linux__adapter_8h_source.xhtml'
 </div><!--header-->
 <div class="contents">
 <a href="../../d7/db2/linux__adapter_8h.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *  Copyright (c) 2016, SLikeSoft UG (haftungsbeschränkt)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *  Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  This source code is licensed under the MIT-style license found in the</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  license.txt file in the root directory of this source tree.</span></div>
@@ -132,61 +132,67 @@ $(document).ready(function(){initNavTree('d7/db2/linux__adapter_8h_source.xhtml'
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> sprintf_s(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> sizeOfBuffer, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;errno_t strcat_s(<span class="keywordtype">char</span> *strDestination, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;errno_t strcpy_s(<span class="keywordtype">char</span>* strDestination, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;errno_t strncat_s(<span class="keywordtype">char</span> *strDest, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;errno_t strncpy_s(<span class="keywordtype">char</span> *strDest, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span> vsnprintf_s(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> sizeOfBuffer, <span class="keywordtype">size_t</span> count, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list argptr);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;errno_t wcscat_s(<span class="keywordtype">wchar_t</span> *strDestination, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *strSource);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;errno_t wcscpy_s(<span class="keywordtype">wchar_t</span>* strDestination, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *strSource);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// corresponding template overloads</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t mbstowcs_s(<span class="keywordtype">size_t</span> *pReturnValue, <span class="keywordtype">wchar_t</span>(&amp;wcstr)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span> *mbstr, <span class="keywordtype">size_t</span> count)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> mbstowcs_s(pReturnValue, wcstr, BufferSize, mbstr, count);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; <span class="keywordtype">int</span> sprintf_s(<span class="keywordtype">char</span> (&amp;buffer)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    va_list arglist;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    va_start(arglist, format);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> numCharsWritten = vsnprintf_s(buffer, BufferSize, BufferSize - 1, format, arglist);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    va_end(arglist);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> numCharsWritten;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strcat_s(<span class="keywordtype">char</span> (&amp;strDestination)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span>* strSource)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> strcat_s(strDestination, BufferSize, strSource);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strcpy_s(<span class="keywordtype">char</span> (&amp;strDestination)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span>* strSource)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> strcpy_s(strDestination, BufferSize, strSource);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strncat_s(<span class="keywordtype">char</span>(&amp;strDest)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> strncat_s(strDest, BufferSize, strSource, count);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strncpy_s(<span class="keywordtype">char</span>(&amp;strDest)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> strncpy_s(strDest, BufferSize, strSource, count);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; <span class="keywordtype">int</span> vsnprintf_s(<span class="keywordtype">char</span> (&amp;buffer)[BufferSize], <span class="keywordtype">size_t</span> count, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list argptr)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> vsnprintf_s(buffer, BufferSize, count, format, argptr);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;errno_t strerror_s(<span class="keywordtype">char</span>* buffer, <span class="keywordtype">size_t</span> numberOfElements, <span class="keywordtype">int</span> errnum);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;errno_t strncat_s(<span class="keywordtype">char</span> *strDest, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;errno_t strncpy_s(<span class="keywordtype">char</span> *strDest, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> vsnprintf_s(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> sizeOfBuffer, <span class="keywordtype">size_t</span> count, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list argptr);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;errno_t wcscat_s(<span class="keywordtype">wchar_t</span> *strDestination, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *strSource);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;errno_t wcscpy_s(<span class="keywordtype">wchar_t</span>* strDestination, <span class="keywordtype">size_t</span> numberOfElements, <span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *strSource);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// corresponding template overloads</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t mbstowcs_s(<span class="keywordtype">size_t</span> *pReturnValue, <span class="keywordtype">wchar_t</span>(&amp;wcstr)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span> *mbstr, <span class="keywordtype">size_t</span> count)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> mbstowcs_s(pReturnValue, wcstr, BufferSize, mbstr, count);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; <span class="keywordtype">int</span> sprintf_s(<span class="keywordtype">char</span> (&amp;buffer)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    va_list arglist;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    va_start(arglist, format);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> numCharsWritten = vsnprintf_s(buffer, BufferSize, BufferSize - 1, format, arglist);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    va_end(arglist);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> numCharsWritten;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strcat_s(<span class="keywordtype">char</span> (&amp;strDestination)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span>* strSource)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> strcat_s(strDestination, BufferSize, strSource);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strcpy_s(<span class="keywordtype">char</span> (&amp;strDestination)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span>* strSource)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> strcpy_s(strDestination, BufferSize, strSource);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strerror_s(<span class="keywordtype">char</span>(&amp;buffer)[BufferSize], <span class="keywordtype">int</span> errnum)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> strerror_s(buffer, BufferSize, errnum);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strncat_s(<span class="keywordtype">char</span>(&amp;strDest)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> strncat_s(strDest, BufferSize, strSource, count);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; errno_t strncpy_s(<span class="keywordtype">char</span>(&amp;strDest)[BufferSize], <span class="keyword">const</span> <span class="keywordtype">char</span> *strSource, <span class="keywordtype">size_t</span> count)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> strncpy_s(strDest, BufferSize, strSource, count);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> BufferSize&gt; <span class="keywordtype">int</span> vsnprintf_s(<span class="keywordtype">char</span> (&amp;buffer)[BufferSize], <span class="keywordtype">size_t</span> count, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list argptr)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> vsnprintf_s(buffer, BufferSize, count, format, argptr);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_74389ed8173ad57b461b9d623a1f3867.xhtml">Source</a></li><li class="navelem"><a class="el" href="../../dir_bbb90e3ef9167a594ae33323139a2595.xhtml">include</a></li><li class="navelem"><a class="el" href="../../dir_88467e66686deb9d3756fe4fc298e321.xhtml">slikenet</a></li><li class="navelem"><a class="el" href="../../d7/db2/linux__adapter_8h.xhtml">linux_adapter.h</a></li>
-    <li class="footer">Generated on Sat May 5 2018 17:33:24 for SLikeNet by
+    <li class="footer">Generated on Wed Aug 14 2019 22:09:46 for SLikeNet by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">SLikeNet
-   &#160;<span id="projectnumber">0.1.2</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('d3/d3d/_d_s___b_plus_tree_8h_source.xh
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *  of patent rights can be found in the RakNet Patents.txt file in the same directory.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Modified work: Copyright (c) 2016-2017, SLikeSoft UG (haftungsbeschränkt)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  license found in the license.txt file in the root directory of this source tree.</span></div>
@@ -1102,165 +1102,166 @@ $(document).ready(function(){initNavTree('d3/d3d/_d_s___b_plus_tree_8h_source.xh
 <div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;        <span class="keywordtype">int</span> i;</div>
 <div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;        <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%i] SELF=%p\n&quot;</span>, index+1, leaf);</div>
 <div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;        <span class="keywordflow">for</span> (i=0; i &lt; leaf-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>; i++)</div>
-<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot; %i. %i\n&quot;</span>, i+1, leaf-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a75e91d62d50b35588a4ec213b455ad73">data</a>[i]);</div>
-<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;    }</div>
-<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> KeyType, <span class="keyword">class</span> DataType, <span class="keywordtype">int</span> order&gt;</div>
-<div class="line"><a name="l01008"></a><span class="lineno"><a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#a13b0bb9cfe607796ac9655531b7c8d27"> 1008</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#a13b0bb9cfe607796ac9655531b7c8d27">BPlusTree&lt;KeyType, DataType, order&gt;::PrintLeaves</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;    {</div>
-<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;        ForEachLeaf(PrintLeaf);</div>
-<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;    }</div>
-<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;</div>
-<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> KeyType, <span class="keyword">class</span> DataType, <span class="keywordtype">int</span> order&gt;</div>
-<div class="line"><a name="l01014"></a><span class="lineno"><a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#af2df9815c4b1a9bda8d426c14e873bb6"> 1014</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#af2df9815c4b1a9bda8d426c14e873bb6">BPlusTree&lt;KeyType, DataType, order&gt;::ValidateTreeRecursive</a>(<a class="code" href="../../da/d80/namespace_data_structures.xhtml#da/da1/struct_data_structures_1_1_page">Page&lt;KeyType, DataType, order&gt;</a> *cur)</div>
-<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;    {</div>
-<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;        <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(cur==root || cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>&gt;=order/2);</div>
-<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;</div>
-<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;        <span class="keywordflow">if</span> (cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[0]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a9b2b5cb1fdd5ef355032162e6da67fb8">isLeaf</a>)</div>
-<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;        {</div>
-<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[0]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[0] &lt; cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[0]);</div>
-<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i &lt; cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>; i++)</div>
-<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;            {</div>
-<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i+1]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[0]==cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[i]);</div>
-<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;            }</div>
-<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;        }</div>
-<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;        {</div>
-<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i &lt; cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>+1; i++)</div>
-<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;                ValidateTreeRecursive(cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]);</div>
-<div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;        }</div>
-<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;    }</div>
-<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;</div>
-<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> KeyType, <span class="keyword">class</span> DataType, <span class="keywordtype">int</span> order&gt;</div>
-<div class="line"><a name="l01034"></a><span class="lineno"><a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#aa95c0d019b5d7b34b9a0c56a5b46813a"> 1034</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#aa95c0d019b5d7b34b9a0c56a5b46813a">BPlusTree&lt;KeyType, DataType, order&gt;::PrintGraph</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;    {</div>
-<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;        <a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml" title="A queue implemented as an array with a read and write index.">DataStructures::Queue&lt;DataStructures::Page&lt;KeyType, DataType, order&gt;</a> *&gt; queue;</div>
-<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;        queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(root,<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
-<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;        queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(0,<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
-<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;        <a class="code" href="../../da/d80/namespace_data_structures.xhtml#da/da1/struct_data_structures_1_1_page">DataStructures::Page&lt;KeyType, DataType, order&gt;</a> *ptr;</div>
-<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;        <span class="keywordtype">int</span> i,j;</div>
-<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;        <span class="keywordflow">if</span> (root)</div>
-<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;        {</div>
-<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%p(&quot;</span>, root);</div>
-<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;            <span class="keywordflow">for</span> (i=0; i &lt; root-&gt;size; i++)</div>
-<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;            {</div>
-<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%i &quot;</span>, root-&gt;keys[i]);</div>
-<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;            }</div>
-<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;) &quot;</span>);</div>
-<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;        }</div>
-<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;        <span class="keywordflow">while</span> (queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae2aec093c82f780558c23f8ae9f296b8">Size</a>())</div>
-<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;        {</div>
-<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;            ptr=queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#a25272370e684388afd807c5369e4ef87">Pop</a>();</div>
-<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;            <span class="keywordflow">if</span> (ptr==0)</div>
-<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a9b2b5cb1fdd5ef355032162e6da67fb8">isLeaf</a>==<span class="keyword">false</span>)</div>
-<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;            {</div>
-<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;                <span class="keywordflow">for</span> (i=0; i &lt; ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>+1; i++)</div>
-<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;                {</div>
-<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;                    <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%p(&quot;</span>, ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]);</div>
-<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;                    <span class="comment">//RAKNET_DEBUG_PRINTF(&quot;(&quot;, ptr-&gt;children[i]);</span></div>
-<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;                    <span class="keywordflow">for</span> (j=0; j &lt; ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>; j++)</div>
-<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;                        <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%i &quot;</span>, ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[j]);</div>
-<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;                    <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;) &quot;</span>);</div>
-<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;                    queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i],<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
-<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;                }</div>
-<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;                queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(0,<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
-<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot; -- &quot;</span>);</div>
-<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;            }</div>
-<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;        }</div>
-<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;        <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;    }</div>
-<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;}</div>
-<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;<span class="preprocessor">#ifdef _MSC_VER</span></div>
-<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma warning( pop )</span></div>
-<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;<span class="comment">// Code to test this hellish data structure.</span></div>
-<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;<span class="comment">#include &quot;DS_BPlusTree.h&quot;</span></div>
-<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;<span class="comment">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;<span class="comment">// Handle underflow on root.  If there is only one item left then I can go downwards.</span></div>
-<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;<span class="comment">// Make sure I keep the leftmost pointer valid by traversing it</span></div>
-<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;<span class="comment">// When I free a leaf, be sure to adjust the pointers around it.</span></div>
-<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;<span class="comment">#include &quot;Rand.h&quot;</span></div>
-<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;<span class="comment">void main(void)</span></div>
-<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;<span class="comment">    DataStructures::BPlusTree&lt;int, int, 16&gt; btree;</span></div>
-<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;<span class="comment">    DataStructures::List&lt;int&gt; haveList, removedList;</span></div>
-<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;<span class="comment">    int temp;</span></div>
-<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;<span class="comment">    int i, j, index;</span></div>
-<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;<span class="comment">    int testSize;</span></div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;<span class="comment">    bool b;</span></div>
-<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;<span class="comment">    for (testSize=0; testSize &lt; 514; testSize++)</span></div>
-<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;<span class="comment">    {</span></div>
-<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;<span class="comment">        RAKNET_DEBUG_PRINTF(&quot;TestSize=%i\n&quot;, testSize);</span></div>
-<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;<span class="comment">        for (i=0; i &lt; testSize; i++)</span></div>
-<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;<span class="comment">            haveList.Insert(i);</span></div>
-<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;<span class="comment">        for (i=0; i &lt; testSize; i++)</span></div>
-<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;<span class="comment">            index=i+randomMT()%(testSize-i);</span></div>
-<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;<span class="comment">            temp=haveList[index];</span></div>
-<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;<span class="comment">            haveList[index]=haveList[i];</span></div>
-<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;<span class="comment">            haveList[i]=temp;</span></div>
-<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;<span class="comment">        for (i=0; i&lt;testSize; i++)</span></div>
-<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;<span class="comment">            btree.Insert(haveList[i], haveList[i]);</span></div>
-<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;<span class="comment">            btree.ValidateTree();</span></div>
-<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;<span class="comment">        for (i=0; i &lt; testSize; i++)</span></div>
-<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;<span class="comment">            index=i+randomMT()%(testSize-i);</span></div>
-<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;<span class="comment">            temp=haveList[index];</span></div>
-<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;<span class="comment">            haveList[index]=haveList[i];</span></div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;<span class="comment">            haveList[i]=temp;</span></div>
-<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;<span class="comment">        for (i=0; i&lt;testSize; i++)</span></div>
-<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;<span class="comment">            btree.Delete(haveList[0]); // Asserts on 8th call.  Fails on going to remove 8 (7th call)</span></div>
-<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;<span class="comment">            removedList.Insert(haveList[0]);</span></div>
-<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;<span class="comment">            haveList.RemoveAtIndex(0);</span></div>
-<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;<span class="comment">            for (j=0; j &lt; removedList.Size(); j++)</span></div>
-<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;<span class="comment">                b=btree.Get(removedList[j], temp);</span></div>
-<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;<span class="comment">                RakAssert(b==false);</span></div>
-<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;<span class="comment">            for (j=0; j &lt; haveList.Size(); j++)</span></div>
-<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;<span class="comment">                b=btree.Get(haveList[j], temp);</span></div>
-<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;<span class="comment">                RakAssert(b==true);</span></div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;<span class="comment">                RakAssert(haveList[j]==temp);</span></div>
-<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;<span class="comment">            RakAssert(btree.Size()==haveList.Size());</span></div>
-<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;<span class="comment">            btree.ValidateTree();</span></div>
-<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;<span class="comment">        btree.Clear(_FILE_AND_LINE_);</span></div>
-<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;<span class="comment">        removedList.Clear(_FILE_AND_LINE_);</span></div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;<span class="comment">        haveList.Clear(_FILE_AND_LINE_);</span></div>
-<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;<span class="comment">    RAKNET_DEBUG_PRINTF(&quot;Done. %i\n&quot;, btree.Size());</span></div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;<span class="comment">    char ch[256];</span></div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;<span class="comment">    Gets(ch, sizeof(ch));</span></div>
-<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;            <span class="comment">// #med - need to adjust printf-format specified based on the actual datatype</span></div>
+<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot; %i. %p\n&quot;</span>, i+1, leaf-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a75e91d62d50b35588a4ec213b455ad73">data</a>[i]);</div>
+<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;    }</div>
+<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> KeyType, <span class="keyword">class</span> DataType, <span class="keywordtype">int</span> order&gt;</div>
+<div class="line"><a name="l01009"></a><span class="lineno"><a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#a13b0bb9cfe607796ac9655531b7c8d27"> 1009</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#a13b0bb9cfe607796ac9655531b7c8d27">BPlusTree&lt;KeyType, DataType, order&gt;::PrintLeaves</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;    {</div>
+<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;        ForEachLeaf(PrintLeaf);</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;    }</div>
+<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;</div>
+<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> KeyType, <span class="keyword">class</span> DataType, <span class="keywordtype">int</span> order&gt;</div>
+<div class="line"><a name="l01015"></a><span class="lineno"><a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#af2df9815c4b1a9bda8d426c14e873bb6"> 1015</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#af2df9815c4b1a9bda8d426c14e873bb6">BPlusTree&lt;KeyType, DataType, order&gt;::ValidateTreeRecursive</a>(<a class="code" href="../../da/d80/namespace_data_structures.xhtml#da/da1/struct_data_structures_1_1_page">Page&lt;KeyType, DataType, order&gt;</a> *cur)</div>
+<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;    {</div>
+<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;        <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(cur==root || cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>&gt;=order/2);</div>
+<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;</div>
+<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;        <span class="keywordflow">if</span> (cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[0]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a9b2b5cb1fdd5ef355032162e6da67fb8">isLeaf</a>)</div>
+<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;        {</div>
+<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[0]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[0] &lt; cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[0]);</div>
+<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i &lt; cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>; i++)</div>
+<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;            {</div>
+<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i+1]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[0]==cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[i]);</div>
+<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;            }</div>
+<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;        }</div>
+<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;        {</div>
+<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i &lt; cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>+1; i++)</div>
+<div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;                ValidateTreeRecursive(cur-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]);</div>
+<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;        }</div>
+<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;    }</div>
+<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;</div>
+<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> KeyType, <span class="keyword">class</span> DataType, <span class="keywordtype">int</span> order&gt;</div>
+<div class="line"><a name="l01035"></a><span class="lineno"><a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#aa95c0d019b5d7b34b9a0c56a5b46813a"> 1035</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d7/d58/class_data_structures_1_1_b_plus_tree.xhtml#aa95c0d019b5d7b34b9a0c56a5b46813a">BPlusTree&lt;KeyType, DataType, order&gt;::PrintGraph</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;    {</div>
+<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;        <a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml" title="A queue implemented as an array with a read and write index.">DataStructures::Queue&lt;DataStructures::Page&lt;KeyType, DataType, order&gt;</a> *&gt; queue;</div>
+<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;        queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(root,<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
+<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;        queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(0,<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
+<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;        <a class="code" href="../../da/d80/namespace_data_structures.xhtml#da/da1/struct_data_structures_1_1_page">DataStructures::Page&lt;KeyType, DataType, order&gt;</a> *ptr;</div>
+<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;        <span class="keywordtype">int</span> i,j;</div>
+<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;        <span class="keywordflow">if</span> (root)</div>
+<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;        {</div>
+<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%p(&quot;</span>, root);</div>
+<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;            <span class="keywordflow">for</span> (i=0; i &lt; root-&gt;size; i++)</div>
+<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;            {</div>
+<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%i &quot;</span>, root-&gt;keys[i]);</div>
+<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;            }</div>
+<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;) &quot;</span>);</div>
+<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;            <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;        }</div>
+<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;        <span class="keywordflow">while</span> (queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae2aec093c82f780558c23f8ae9f296b8">Size</a>())</div>
+<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;        {</div>
+<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;            ptr=queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#a25272370e684388afd807c5369e4ef87">Pop</a>();</div>
+<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;            <span class="keywordflow">if</span> (ptr==0)</div>
+<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a9b2b5cb1fdd5ef355032162e6da67fb8">isLeaf</a>==<span class="keyword">false</span>)</div>
+<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;            {</div>
+<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;                <span class="keywordflow">for</span> (i=0; i &lt; ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>+1; i++)</div>
+<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;                {</div>
+<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;                    <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%p(&quot;</span>, ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]);</div>
+<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;                    <span class="comment">//RAKNET_DEBUG_PRINTF(&quot;(&quot;, ptr-&gt;children[i]);</span></div>
+<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;                    <span class="keywordflow">for</span> (j=0; j &lt; ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a4440cd3ce0db1898fe3511b6e675e04c">size</a>; j++)</div>
+<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;                        <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;%i &quot;</span>, ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i]-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2e61c5f5aaa2f2093e9ea66ba91ab0f4">keys</a>[j]);</div>
+<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;                    <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;) &quot;</span>);</div>
+<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;                    queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(ptr-&gt;<a class="code" href="../../da/d80/namespace_data_structures.xhtml#a2c786de0cb834c236c6b47923f1c6010">children</a>[i],<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
+<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;                }</div>
+<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;                queue.<a class="code" href="../../d3/d87/class_data_structures_1_1_queue.xhtml#ae564a88f3367a786777694e778a4500d">Push</a>(0,<a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
+<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;                <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot; -- &quot;</span>);</div>
+<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;            }</div>
+<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;        }</div>
+<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;        <a class="code" href="../../d8/db0/defines_8h.xhtml#a2a5d867f7ae6521f217847a78f17ab4a">RAKNET_DEBUG_PRINTF</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;    }</div>
+<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;}</div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;<span class="preprocessor">#ifdef _MSC_VER</span></div>
+<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma warning( pop )</span></div>
+<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;<span class="comment">// Code to test this hellish data structure.</span></div>
+<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;<span class="comment">#include &quot;DS_BPlusTree.h&quot;</span></div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;<span class="comment">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;<span class="comment">// Handle underflow on root.  If there is only one item left then I can go downwards.</span></div>
+<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;<span class="comment">// Make sure I keep the leftmost pointer valid by traversing it</span></div>
+<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;<span class="comment">// When I free a leaf, be sure to adjust the pointers around it.</span></div>
+<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;<span class="comment">#include &quot;Rand.h&quot;</span></div>
+<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;<span class="comment">void main(void)</span></div>
+<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;<span class="comment">{</span></div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;<span class="comment">    DataStructures::BPlusTree&lt;int, int, 16&gt; btree;</span></div>
+<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;<span class="comment">    DataStructures::List&lt;int&gt; haveList, removedList;</span></div>
+<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;<span class="comment">    int temp;</span></div>
+<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;<span class="comment">    int i, j, index;</span></div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;<span class="comment">    int testSize;</span></div>
+<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;<span class="comment">    bool b;</span></div>
+<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;<span class="comment">    for (testSize=0; testSize &lt; 514; testSize++)</span></div>
+<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;<span class="comment">        RAKNET_DEBUG_PRINTF(&quot;TestSize=%i\n&quot;, testSize);</span></div>
+<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;<span class="comment">        for (i=0; i &lt; testSize; i++)</span></div>
+<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;<span class="comment">            haveList.Insert(i);</span></div>
+<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;<span class="comment">        for (i=0; i &lt; testSize; i++)</span></div>
+<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;<span class="comment">            index=i+randomMT()%(testSize-i);</span></div>
+<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;<span class="comment">            temp=haveList[index];</span></div>
+<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;<span class="comment">            haveList[index]=haveList[i];</span></div>
+<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;<span class="comment">            haveList[i]=temp;</span></div>
+<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;<span class="comment">        for (i=0; i&lt;testSize; i++)</span></div>
+<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;<span class="comment">            btree.Insert(haveList[i], haveList[i]);</span></div>
+<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;<span class="comment">            btree.ValidateTree();</span></div>
+<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;<span class="comment">        for (i=0; i &lt; testSize; i++)</span></div>
+<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;<span class="comment">            index=i+randomMT()%(testSize-i);</span></div>
+<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;<span class="comment">            temp=haveList[index];</span></div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;<span class="comment">            haveList[index]=haveList[i];</span></div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;<span class="comment">            haveList[i]=temp;</span></div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;<span class="comment">        for (i=0; i&lt;testSize; i++)</span></div>
+<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;<span class="comment">            btree.Delete(haveList[0]); // Asserts on 8th call.  Fails on going to remove 8 (7th call)</span></div>
+<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;<span class="comment">            removedList.Insert(haveList[0]);</span></div>
+<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;<span class="comment">            haveList.RemoveAtIndex(0);</span></div>
+<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;<span class="comment">            for (j=0; j &lt; removedList.Size(); j++)</span></div>
+<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;<span class="comment">                b=btree.Get(removedList[j], temp);</span></div>
+<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;<span class="comment">                RakAssert(b==false);</span></div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;<span class="comment">            for (j=0; j &lt; haveList.Size(); j++)</span></div>
+<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;<span class="comment">                b=btree.Get(haveList[j], temp);</span></div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;<span class="comment">                RakAssert(b==true);</span></div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;<span class="comment">                RakAssert(haveList[j]==temp);</span></div>
+<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;<span class="comment">            RakAssert(btree.Size()==haveList.Size());</span></div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;<span class="comment">            btree.ValidateTree();</span></div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;<span class="comment">        btree.Clear(_FILE_AND_LINE_);</span></div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;<span class="comment">        removedList.Clear(_FILE_AND_LINE_);</span></div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;<span class="comment">        haveList.Clear(_FILE_AND_LINE_);</span></div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;<span class="comment">    RAKNET_DEBUG_PRINTF(&quot;Done. %i\n&quot;, btree.Size());</span></div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;<span class="comment">    char ch[256];</span></div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;<span class="comment">    Gets(ch, sizeof(ch));</span></div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;<span class="comment">}</span></div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;<span class="comment">*/</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_74389ed8173ad57b461b9d623a1f3867.xhtml">Source</a></li><li class="navelem"><a class="el" href="../../dir_bbb90e3ef9167a594ae33323139a2595.xhtml">include</a></li><li class="navelem"><a class="el" href="../../dir_88467e66686deb9d3756fe4fc298e321.xhtml">slikenet</a></li><li class="navelem"><a class="el" href="../../d3/d3d/_d_s___b_plus_tree_8h.xhtml">DS_BPlusTree.h</a></li>
-    <li class="footer">Generated on Sat May 5 2018 17:33:24 for SLikeNet by
+    <li class="footer">Generated on Wed Aug 14 2019 22:09:46 for SLikeNet by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>
