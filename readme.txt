@@ -77,7 +77,7 @@ Table of Contents
    3.5.2   Retail configuration
    3.5.3   OSX usage of @rpath for install_name
    3.5.4   PacketLogger FormatLine() changes
-   3.5.5   CMake install destinations for non-Windows platforms
+   3.5.5   CMake install destination and library names
    3.5.6   Swig/C# wrapper changes
    3.5.6.1 MakeSwig.bat/.sh
    3.5.6.2 C#/Swig Visual Studio projects
@@ -919,8 +919,6 @@ supported compiler version. See chapter 2.2 for a list of what is supported.
 7. Run make
 
 This will build SLikeNet as a static as well as the shared object library.
-Please note that at the moment the generated libraries using CMake are still
-named RakNet. This will be changed in SLikeNet 0.2.0.
 
 3.4 RakNet compatibility mode
 
@@ -1017,13 +1015,22 @@ overwrote the implementation of the FormatLine() method and relied on this
 being used/called from the library, you will have to adjust your overrides to
 overwrite the new variants instead.
 
-3.5.5 CMake install destinations for non-Windows platforms
-RakNet used to install its libs/headers into the source directory rather than
-lib/include destinations commonly used on Linux/OSX platforms. Since this
-prevented straight forward usage of the library on these platforms, it was
-changed in SLikeNet 0.2.0. As of this version, running 'make install' will
-install the lib/header files in the usual locations which are configurable via
-the CMAKE_INSTALL_PREFIX variable.
+3.5.5 CMake install destinations and library names
+On non-Windows platforms, RakNet used to install its libs/headers into the
+source directory rather than using lib/include destinations widely established
+on Linux/OSX platforms. On top of that RakNet named libraries in a way which is
+common on Windows platforms but practically unused on other platforms (i.e.
+the static library file name was called RakNetLibStatic.a and the shared one
+RakNetDLL.so).
+
+As of SLikeNet 0.2.0 this changed. SLikeNet now honors the CMAKE_INSTALL_PREFIX
+variable, uses the standard naming scheme for the library file names
+(libslikenet.a/.so) and on top of that adds support to install multiple
+versions of the library on a single platform by suffixing the install
+destination and shared object files with the version number, as it is
+established practice on Linux/OSX.
+
+This most likely requires changes to build steps/integration on your side.
 
 3.5.6 Swig/C# wrapper changes
 
