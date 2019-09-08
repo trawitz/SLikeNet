@@ -91,6 +91,8 @@ General:
 Core:
   General:
     * fixed NonNumericHostString() incorrectly identifying numeric as non-numeric addresses (#262)
+  BitStream:
+    * SECURITY: fixed BitStream::GetNumberOfUnreadBits() returning an incorrect value, if the readOffset exceeds the number of used bits (#278)
   FullyConnectedMesh2:
     * fixed incorrect delete in FullyConnectedMesh2::Clear() when using a custom allocator (#249)
   RakNetSocket2:
