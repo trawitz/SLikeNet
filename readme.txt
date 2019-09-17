@@ -835,7 +835,7 @@ using GIT, this might be the way you wanna got to acquire a copy of SLikeNet.
 
 Note that on GitHub we don't provide the prebuild libraries in the repository
 due to the implications of large files inside a GIT repository. If you require
-the prebuild biniares you can download these from our webpage (see 3.1.1) or
+the prebuild binaries you can download these from our webpage (see 3.1.1) or
 from the release page on GitHub as separate download packages.
 
 3.2 Using SLikeNet on Windows
