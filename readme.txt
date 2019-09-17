@@ -2299,7 +2299,7 @@ Further, we'd like to thank the following contributors who handed in pull
 requests to the RakNet project on GitHub which are incorporated in SLikeNet:
 - Alex Howland: https://github.com/alliekins (pull request: RAKNET_48)
 - AlιAѕѕaѕѕιN: https://github.com/0x416c69 (pull requests: SLNET_30)
-- BrodyHiggerson: https://github.com/BrodyHiggerson (pull requests: SLNET_50, SLNET_51)
+- BrodyHiggerson: https://github.com/BrodyHiggerson (pull requests: SLNET_50, SLNET_51, SLNET_52)
 - GBearUK: https://github.com/GBearUK (pull request: RAKNET_67)
 - Hunter Mayer: https://github.com/orionnoir (pull request: RAKNET_31)
 - Ian Clarkson: https://github.com/aardvarkk (pull request: RAKNET_84)
