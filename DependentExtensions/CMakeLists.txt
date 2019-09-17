@@ -1,6 +1,12 @@
 #
-# This file was taken from RakNet 4.082 without any modifications.
+# This file was taken from RakNet 4.082.
 # Please see licenses/RakNet license.txt for the underlying license and related copyright.
+#
+#
+# Modified work: Copyright (c) 2019, SLikeSoft UG (haftungsbeschränkt)
+#
+# This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
+# license found in the license.txt file in the root directory of this source tree.
 #
 
 cmake_minimum_required(VERSION 2.6)
@@ -53,9 +59,9 @@ endif()
 IF(NOT WIN32 AND UNIX)
 	IF(RAKNET_EXTENSION_USESPEEX AND RAKNET_ENABLE_EXTENSIONS) 
 		FINDSPEEX()
-		include_directories(${RAKNETHEADERFILES} ${SPEEX_INCLUDE_DIRS})
+		include_directories(${SLIKENET_HEADER_FILES} ${SPEEX_INCLUDE_DIRS})
 		add_library(LibRakVoice STATIC RakVoice.h RakVoice.cpp)
-		target_link_libraries(LibRakVoice ${RAKNET_COMMON_LIBS} ${SPEEX_LIBRARIES})
+		target_link_libraries(LibRakVoice ${SLIKENET_COMMON_LIBS} ${SPEEX_LIBRARIES})
 	ENDIF() 
 ENDIF()
 

@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -181,6 +181,9 @@ void BitStream::Write( BitStream *bitStream)
 }
 void BitStream::Write( BitStream *bitStream, BitSize_t numberOfBits )
 {
+	if (numberOfBits > bitStream->GetNumberOfUnreadBits())
+		return;
+
 	AddBitsAndReallocate( numberOfBits );
 	BitSize_t numberOfBitsMod8;
 
@@ -194,7 +197,7 @@ void BitStream::Write( BitStream *bitStream, BitSize_t numberOfBits )
 		numberOfBitsUsed+=BYTES_TO_BITS(numBytes);
 	}
 
-	while (numberOfBits-->0 && bitStream->readOffset + 1 <= bitStream->numberOfBitsUsed)
+	while (numberOfBits-->0)
 	{
 		numberOfBitsMod8 = numberOfBitsUsed & 7;
 		if ( numberOfBitsMod8 == 0 )
@@ -263,7 +266,7 @@ bool BitStream::Read( char* outByteArray, const unsigned int numberOfBytes )
 	// Optimization:
 	if ((readOffset & 7) == 0)
 	{
-		if ( readOffset + ( numberOfBytes << 3 ) > numberOfBitsUsed )
+		if (GetNumberOfUnreadBits() < (numberOfBytes << 3))
 			return false;
 
 		// Write the data
@@ -272,10 +275,8 @@ bool BitStream::Read( char* outByteArray, const unsigned int numberOfBytes )
 		readOffset += numberOfBytes << 3;
 		return true;
 	}
-	else
-	{
-		return ReadBits( ( unsigned char* ) outByteArray, numberOfBytes * 8 );
-	}
+
+	return ReadBits( ( unsigned char* ) outByteArray, numberOfBytes * 8 );
 }
 
 // Sets the read pointer back to the beginning of your data.
@@ -320,6 +321,10 @@ void BitStream::Write1( void )
 // Returns true if the next data read is a 1, false if it is a 0
 bool BitStream::ReadBit( void )
 {
+	if (GetNumberOfUnreadBits() == 0) {
+		return false;
+	}
+
 	bool result = ( data[ readOffset >> 3 ] & ( 0x80 >> ( readOffset & 7 ) ) ) !=0;
 	readOffset++;
 	return result;
@@ -367,7 +372,7 @@ bool BitStream::ReadAlignedBytes( unsigned char* inOutByteArray, const unsigned 
 	// Byte align
 	AlignReadToByteBoundary();
 
-	if ( readOffset + ( numberOfBytesToRead << 3 ) > numberOfBitsUsed )
+	if (GetNumberOfUnreadBits() < (numberOfBytesToRead << 3))
 		return false;
 
 	// Write the data
@@ -534,6 +539,11 @@ void BitStream::WriteCompressed( const unsigned char* inByteArray,
 	}
 }
 
+void BitStream::AlignReadToByteBoundary()
+{
+	readOffset += 8 - ( (( readOffset - 1 ) & 7 ) + 1 );
+}
+
 // Read numberOfBitsToRead bits to the output source
 // alignBitsToRight should be set to true to convert internal bitstream data to userdata
 // It should be false if you used WriteBits with rightAlignedBits false
@@ -545,7 +555,7 @@ bool BitStream::ReadBits( unsigned char *inOutByteArray, BitSize_t numberOfBitsT
 	if (numberOfBitsToRead<=0)
 		return false;
 
-	if ( readOffset + numberOfBitsToRead > numberOfBitsUsed )
+	if (GetNumberOfUnreadBits() < numberOfBitsToRead)
 		return false;
 
 
@@ -939,6 +949,11 @@ void BitStream::PrintHex( void ) const
 	RAKNET_DEBUG_PRINTF("%s", out);
 }
 
+void BitStream::SetReadOffset(const BitSize_t newReadOffset)
+{
+	readOffset = newReadOffset;
+}
+
 // Exposes the data for you to look at, like PrintBits does.
 // Data will point to the stream.  Returns the length in bits of the stream.
 BitSize_t BitStream::CopyData( unsigned char** _data ) const
@@ -1082,7 +1097,7 @@ void BitStream::WriteAlignedVar8(const char *inByteArray)
 bool BitStream::ReadAlignedVar8(char *inOutByteArray)
 {
 	RakAssert((readOffset&7)==0);
-	if ( readOffset + 1*8 > numberOfBitsUsed )
+	if (GetNumberOfUnreadBits() < 1 * 8)
 		return false;
 
 	inOutByteArray[0] = data[( readOffset >> 3 ) + 0];
@@ -1111,7 +1126,7 @@ void BitStream::WriteAlignedVar16(const char *inByteArray)
 bool BitStream::ReadAlignedVar16(char *inOutByteArray)
 {
 	RakAssert((readOffset&7)==0);
-	if ( readOffset + 2*8 > numberOfBitsUsed )
+	if (GetNumberOfUnreadBits() < 2 * 8)
 		return false;
 #ifndef __BITSTREAM_NATIVE_END
 	if (DoEndianSwap())
@@ -1155,7 +1170,7 @@ void BitStream::WriteAlignedVar32(const char *inByteArray)
 bool BitStream::ReadAlignedVar32(char *inOutByteArray)
 {
 	RakAssert((readOffset&7)==0);
-	if ( readOffset + 4*8 > numberOfBitsUsed )
+	if (GetNumberOfUnreadBits() < 4*8)
 		return false;
 #ifndef __BITSTREAM_NATIVE_END
 	if (DoEndianSwap())

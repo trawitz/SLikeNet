@@ -512,6 +512,7 @@ bool SystemAddress::SetBinaryAddress(const char *str, char portDelineator)
 		ip[0] = '\0';
 
 		// copy the plain hostname (excluding the (optional) port part)
+		// #med - change OP_NEW_ARRAY to support size_t type
 		char* hostname = OP_NEW_ARRAY<char>(static_cast<int>(delimiterPos + 1), _FILE_AND_LINE_);
 		strncpy_s(hostname, delimiterPos + 1, str, delimiterPos);
 		RakNetSocket2::DomainNameToIP(hostname, ip);
@@ -777,4 +778,13 @@ bool RakNetGUID::FromString(const char *source)
 unsigned long RakNetGUID::ToUint32( const RakNetGUID &g )
 {
 	return ((unsigned long) (g.g >> 32)) ^ ((unsigned long) (g.g & 0xFFFFFFFF));
+}
+
+namespace SLNet
+{
+	// initialization list
+#ifndef SWIG
+	const SystemAddress UNASSIGNED_SYSTEM_ADDRESS;
+	const RakNetGUID UNASSIGNED_RAKNET_GUID((uint64_t)-1);
+#endif
 }

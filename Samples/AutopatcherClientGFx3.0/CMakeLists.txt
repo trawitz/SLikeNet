@@ -3,7 +3,7 @@
 # Please see licenses/RakNet license.txt for the underlying license and related copyright.
 #
 #
-# Modified work: Copyright (c) 2017, SLikeSoft UG (haftungsbeschränkt)
+# Modified work: Copyright (c) 2017-2019, SLikeSoft UG (haftungsbeschränkt)
 #
 # This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
 # license found in the license.txt file in the root directory of this source tree.
@@ -14,8 +14,8 @@ project(AutopatcherClientGFx3)
 IF(WIN32 AND NOT UNIX)
 	FINDD3D()
 	FINDSCALEGFX()
-	include_directories(${RAKNETHEADERFILES} ./ ${Autopatcher_SOURCE_DIR} ${BZip2_SOURCE_DIR} ${D3D_INCLUDE_DIR} ${SCALEGFX_INCLUDE_DIR} "${RakNet_SOURCE_DIR}/DependentExtensions/GFx3")
-	FILE(GLOB GFXSRC GFxPlayerTinyD3D9.cpp "${RakNet_SOURCE_DIR}/DependentExtensions/GFx3/*.cpp" "${RakNet_SOURCE_DIR}/DependentExtensions/GFx3/*.h")
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${Autopatcher_SOURCE_DIR} ${BZip2_SOURCE_DIR} ${D3D_INCLUDE_DIR} ${SCALEGFX_INCLUDE_DIR} "${SLikeNet_SOURCE_DIR}/DependentExtensions/GFx3")
+	FILE(GLOB GFXSRC GFxPlayerTinyD3D9.cpp "${SLikeNet_SOURCE_DIR}/DependentExtensions/GFx3/*.cpp" "${SLikeNet_SOURCE_DIR}/DependentExtensions/GFx3/*.h")
 	FILE(GLOB AUTOSRC "${Autopatcher_SOURCE_DIR}/*.cpp" "${Autopatcher_SOURCE_DIR}/*.h")
 	FILE(GLOB BZSRC "${BZip2_SOURCE_DIR}/*.c" "${BZip2_SOURCE_DIR}/*.h")
 	LIST(REMOVE_ITEM BZSRC "${BZip2_SOURCE_DIR}/dlltest.c" "${BZip2_SOURCE_DIR}/mk251.c" "${BZip2_SOURCE_DIR}/bzip2recover.c")
@@ -27,7 +27,7 @@ IF(WIN32 AND NOT UNIX)
 	SOURCE_GROUP(BZip2Wrapper FILES ${WRAPFILES})
 	SOURCE_GROUP(GFx3 FILES ${GFXSRC})
 	add_executable(AutopatcherClientGFx3 WIN32 "AutopatcherClientGFx3Impl.cpp" AutopatcherClientGFx3Impl.h ${AUTOSRC} ${BZSRC} ${WRAPFILES} ${GFXSRC})
-	target_link_libraries(AutopatcherClientGFx3 ${RAKNET_COMMON_LIBS} ${D3D_LIBRARIES} winmm.lib imm32.lib ${SCALEGFX_DEBUG_LIBRARIES} ${SCALEGFX_LIBRARIES})
+	target_link_libraries(AutopatcherClientGFx3 ${SLIKENET_COMMON_LIBS} ${D3D_LIBRARIES} winmm.lib imm32.lib ${SCALEGFX_DEBUG_LIBRARIES} ${SCALEGFX_LIBRARIES})
 	VSUBFOLDER(AutopatcherClientGFx3 "Samples/AutoPatcher/Client")
 ENDIF(WIN32 AND NOT UNIX)
 

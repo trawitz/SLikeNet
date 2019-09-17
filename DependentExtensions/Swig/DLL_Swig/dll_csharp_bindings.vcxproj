@@ -586,6 +586,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\bindings\csharp\wrapper\slikenet_wrapper.cpp" />
+    <ClCompile Include="..\..\..\Source\src\crypto\cryptomanager.cpp" />
     <ClCompile Include="..\..\..\Source\src\crypto\factory.cpp" />
     <ClCompile Include="..\..\..\Source\src\crypto\fileencrypter.cpp" />
     <ClCompile Include="..\..\..\Source\src\crypto\securestring.cpp" />
@@ -697,6 +698,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\bindings\csharp\wrapper\slikenet_wrapper.h" />
+    <ClInclude Include="..\..\..\Source\include\slikenet\crypto\cryptomanager.h" />
     <ClInclude Include="..\..\..\Source\include\slikenet\crypto\factory.h" />
     <ClInclude Include="..\..\..\Source\include\slikenet\crypto\fileencrypter.h" />
     <ClInclude Include="..\..\..\Source\include\slikenet\crypto\ifileencrypter.h" />

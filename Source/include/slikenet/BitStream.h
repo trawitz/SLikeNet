@@ -7,7 +7,7 @@
  *  of patent rights can be found in the RakNet Patents.txt file in the same directory.
  *
  *
- *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)
+ *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)
  *
  *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
  *  license found in the license.txt file in the root directory of this source tree.
@@ -528,10 +528,10 @@ namespace SLNet
 		inline BitSize_t GetReadOffset( void ) const {return readOffset;}
 
 		/// \brief Sets the read bit index
-		void SetReadOffset( const BitSize_t newReadOffset ) {readOffset=newReadOffset;}
+		void SetReadOffset(const BitSize_t newReadOffset);
 
 		/// \brief Returns the number of bits left in the stream that haven't been read
-		inline BitSize_t GetNumberOfUnreadBits( void ) const {return numberOfBitsUsed - readOffset;}
+		inline BitSize_t GetNumberOfUnreadBits( void ) const { return readOffset > numberOfBitsUsed ? 0 : numberOfBitsUsed - readOffset; }
 
 		/// \brief Makes a copy of the internal data for you \a _data will point to
 		/// the stream. Partial bytes are left aligned.
@@ -611,7 +611,7 @@ namespace SLNet
 		/// can also be used to force coalesced bitstreams to start on byte
 		/// boundaries so so WriteAlignedBits and ReadAlignedBits both
 		/// calculate the same offset when aligning.
-		inline void AlignReadToByteBoundary( void ) {readOffset += 8 - ( (( readOffset - 1 ) & 7 ) + 1 );}
+		void AlignReadToByteBoundary(void);
 
 		/// \brief Read \a numberOfBitsToRead bits to the output source.
 		/// \details alignBitsToRight should be set to true to convert internal
@@ -1307,7 +1307,7 @@ namespace SLNet
 	template <>
 		inline bool BitStream::Read(bool &outTemplateVar)
 	{
-		if ( readOffset + 1 > numberOfBitsUsed )
+		if (GetNumberOfUnreadBits() == 0)
 			return false;
 
 		if ( data[ readOffset >> 3 ] & ( 0x80 >> ( readOffset & 7 ) ) )   // Is it faster to just write it out here?
@@ -1357,7 +1357,7 @@ namespace SLNet
 	inline bool BitStream::Read(uint24_t &outTemplateVar)
 	{
 		AlignReadToByteBoundary();
-		if ( readOffset + 3*8 > numberOfBitsUsed )
+		if (GetNumberOfUnreadBits() < 3*8)
 			return false;
 
 		if (IsBigEndian()==false)

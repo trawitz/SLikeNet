@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">SLikeNet
-   &#160;<span id="projectnumber">0.1.2</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('d3/d93/_rak_net_types_8cpp_source.xhtm
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *  of patent rights can be found in the RakNet Patents.txt file in the same directory.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  license found in the license.txt file in the root directory of this source tree.</span></div>
@@ -140,12 +140,12 @@ $(document).ready(function(){initNavTree('d3/d93/_rak_net_types_8cpp_source.xhtm
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d43/_windows_includes_8h.xhtml">slikenet/WindowsIncludes.h</a>&quot;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.xhtml">string.h</a>&gt;</span> <span class="comment">// strncasecmp</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span> <span class="comment">// used for getnameinfo()</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;netdb.h&gt;</span>      <span class="comment">// used for getnameinfo()</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d3e/_itoa_8h.xhtml">slikenet/Itoa.h</a>&quot;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d8/da4/_socket_layer_8h.xhtml" title="SocketLayer class implementation.">slikenet/SocketLayer.h</a>&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/d8e/_super_fast_hash_8h.xhtml">slikenet/SuperFastHash.h</a>&quot;</span></div>
@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('d3/d93/_rak_net_types_8cpp_source.xhtm
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// IPV4: natpunch.jenkinssoftware.com</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// IPV6: fe80::7c:31f7:fec4:27de%14</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> ((host[i]&gt;=<span class="charliteral">&#39;g&#39;</span> &amp;&amp; host[i]&lt;=<span class="charliteral">&#39;z&#39;</span>) ||</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            (host[i]&gt;=<span class="charliteral">&#39;A&#39;</span> &amp;&amp; host[i]&lt;=<span class="charliteral">&#39;Z&#39;</span>))</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            (host[i]&gt;=<span class="charliteral">&#39;G&#39;</span> &amp;&amp; host[i]&lt;=<span class="charliteral">&#39;Z&#39;</span>))</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        ++i;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
@@ -637,359 +637,300 @@ $(document).ready(function(){initNavTree('d3/d93/_rak_net_types_8cpp_source.xhtm
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00532"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a34071dfa14d9faa8a7e28e6d1491cb92">  532</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a34071dfa14d9faa8a7e28e6d1491cb92" title="Old version, for crap platforms that don&#39;t support newer socket functions.">SystemAddress::SetBinaryAddress</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> portDelineator)</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;{</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a9a4f2de1c5f39778584c24da13b18180">NonNumericHostString</a>( str ) )</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    {</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="preprocessor">#if defined(_WIN32)</span></div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (_strnicmp(str,<span class="stringliteral">&quot;localhost&quot;</span>, 9)==0)</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span> (strncasecmp(str,<span class="stringliteral">&quot;localhost&quot;</span>, 9)==0)</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="preprocessor"></span>        {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="keywordtype">size_t</span> delimiterPos = 0;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordtype">size_t</span> stringLength = strlen(str);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <span class="keywordflow">for</span> (; delimiterPos &lt; stringLength; ++delimiterPos) {</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        <span class="keywordflow">if</span> (str[delimiterPos] == portDelineator) {</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            <span class="keywordflow">break</span>; <span class="comment">// found location of port delimiter</span></div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        }</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    }</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a9a4f2de1c5f39778584c24da13b18180">NonNumericHostString</a>(str)) {</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        <span class="comment">//const char *ip = ( char* ) SocketLayer::DomainNameToIP( str );</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        <span class="keywordtype">char</span> ip[65];</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        ip[0]=0;</div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            inet_pton(AF_INET, <span class="stringliteral">&quot;127.0.0.1&quot;</span>, &amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_addr.s_addr);</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;            <span class="keywordflow">if</span> (str[9])</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            {</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a5f42b847875bcf297eda4ebadeda7abe">SetPortHostOrder</a>((<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>) atoi(str+9));</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            }</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        }</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="comment">//const char *ip = ( char* ) SocketLayer::DomainNameToIP( str );</span></div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <span class="keywordtype">char</span> ip[65];</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        ip[0]=0;</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <a class="code" href="../../d1/dde/class_s_l_net_1_1_rak_net_socket2.xhtml#a5afa9c585a7d5810f2a65933155cf1bb">RakNetSocket2::DomainNameToIP</a>(str, ip);</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="keywordflow">if</span> (ip[0])</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        {</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            inet_pton(AF_INET, ip, &amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_addr.s_addr);</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        }</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        {</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            *<span class="keyword">this</span> = <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#acea7714c995aae0e1feaf79c9e7f073d" title="Index of an invalid SystemAddress.">UNASSIGNED_SYSTEM_ADDRESS</a>;</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <span class="comment">// copy the plain hostname (excluding the (optional) port part)</span></div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <span class="comment">// #med - change OP_NEW_ARRAY to support size_t type</span></div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <span class="keywordtype">char</span>* hostname = OP_NEW_ARRAY&lt;char&gt;(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(delimiterPos + 1), <a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        strncpy_s(hostname, delimiterPos + 1, str, delimiterPos);</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        <a class="code" href="../../d1/dde/class_s_l_net_1_1_rak_net_socket2.xhtml#a5afa9c585a7d5810f2a65933155cf1bb">RakNetSocket2::DomainNameToIP</a>(hostname, ip);</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#acd53258ab2c0b731df325c91b2e85c9b">OP_DELETE_ARRAY</a>(hostname, <a class="code" href="../../d8/db0/defines_8h.xhtml#a8661ec2137eef33a8cd0cd618a748871">_FILE_AND_LINE_</a>);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        <span class="keywordflow">if</span> (ip[0] != <span class="charliteral">&#39;\0&#39;</span>) {</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            inet_pton(AF_INET, ip, &amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_addr.s_addr);</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        }</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            *<span class="keyword">this</span> = <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#acea7714c995aae0e1feaf79c9e7f073d" title="Index of an invalid SystemAddress.">UNASSIGNED_SYSTEM_ADDRESS</a>;</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    }</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <span class="comment">// Split the string into the first part, and the : part</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="keywordtype">char</span> IPPart[22];</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        <span class="comment">// Only write the valid parts, don&#39;t change existing if invalid</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="comment">//  binaryAddress=UNASSIGNED_SYSTEM_ADDRESS.binaryAddress;</span></div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        <span class="comment">//  port=UNASSIGNED_SYSTEM_ADDRESS.port;</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="keywordtype">size_t</span> index = 0;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <span class="comment">// #med - revise this --- if the hostname length &gt; 22 we&#39;d reject it rather than skipping what is beyond the max length...</span></div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        <span class="keywordflow">for</span> (; index &lt; delimiterPos &amp;&amp; index &lt; 22; ++index) {</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            <span class="keywordflow">if</span> (str[index]!=<span class="charliteral">&#39;.&#39;</span> &amp;&amp; (str[index]&lt;<span class="charliteral">&#39;0&#39;</span> || str[index]&gt;<span class="charliteral">&#39;9&#39;</span>)) {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            }</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            IPPart[index]=str[index];</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        }</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    }</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    {</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <span class="comment">//#ifdef _XBOX</span></div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        <span class="comment">//  binaryAddress=UNASSIGNED_SYSTEM_ADDRESS.binaryAddress;</span></div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        <span class="comment">//#else</span></div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        <span class="comment">// Split the string into the first part, and the : part</span></div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        <span class="keywordtype">int</span> index, portIndex;</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        <span class="keywordtype">char</span> IPPart[22];</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="keywordtype">char</span> portPart[10];</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <span class="comment">// Only write the valid parts, don&#39;t change existing if invalid</span></div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="comment">//  binaryAddress=UNASSIGNED_SYSTEM_ADDRESS.binaryAddress;</span></div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        <span class="comment">//  port=UNASSIGNED_SYSTEM_ADDRESS.port;</span></div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordflow">for</span> (index=0; str[index] &amp;&amp; str[index]!=portDelineator &amp;&amp; index&lt;22; index++)</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        {</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            <span class="keywordflow">if</span> (str[index]!=<span class="charliteral">&#39;.&#39;</span> &amp;&amp; (str[index]&lt;<span class="charliteral">&#39;0&#39;</span> || str[index]&gt;<span class="charliteral">&#39;9&#39;</span>))</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;            IPPart[index]=str[index];</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        }</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        IPPart[index]=0;</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        portPart[0]=0;</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <span class="keywordflow">if</span> (str[index] &amp;&amp; str[index+1])</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        {</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            index++;</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            <span class="keywordflow">for</span> (portIndex=0; portIndex&lt;10 &amp;&amp; str[index] &amp;&amp; index &lt; 22+10; index++, portIndex++)</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            {</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                <span class="keywordflow">if</span> (str[index]&lt;<span class="charliteral">&#39;0&#39;</span> || str[index]&gt;<span class="charliteral">&#39;9&#39;</span>)</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        IPPart[index]=0;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        <span class="keywordflow">if</span> (index &gt; 0) {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            inet_pton(AF_INET, IPPart, &amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_addr.s_addr);</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        }</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordtype">char</span> portPart[10];</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    portPart[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    <span class="keywordflow">if</span> (str[delimiterPos] != <span class="charliteral">&#39;\0&#39;</span>) {</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="keywordtype">size_t</span> portIndex;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        ++delimiterPos; <span class="comment">// skip the delimiter</span></div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="keywordflow">for</span> (portIndex = 0; portIndex &lt; 10 &amp;&amp; str[delimiterPos] != <span class="charliteral">&#39;\0&#39;</span>; ++delimiterPos, ++portIndex) {</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            <span class="keywordflow">if</span> (str[delimiterPos] &lt; <span class="charliteral">&#39;0&#39;</span> || str[delimiterPos] &gt; <span class="charliteral">&#39;9&#39;</span>) {</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            }</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;            portPart[portIndex] = str[delimiterPos];</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        }</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        portPart[portIndex] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    }</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="keywordflow">if</span> (portPart[0] != <span class="charliteral">&#39;\0&#39;</span>) {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <span class="comment">// #med - missing / insufficient port range range</span></div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port = htons((<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>)atoi(portPart));</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        <span class="comment">// #med - not set in IPv6 mode</span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a> = ntohs(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port);</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    }</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;}</div>
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                portPart[portIndex]=str[index];</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            }</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            portPart[portIndex]=0;</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        }</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;        <span class="keywordflow">if</span> (IPPart[0])</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        {</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            inet_pton(AF_INET, IPPart, &amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_addr.s_addr);</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        }</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;        <span class="keywordflow">if</span> (portPart[0])</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;        {</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=htons((<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>) atoi(portPart));</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=ntohs(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port);</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        }</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        <span class="comment">//#endif</span></div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    }</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;}</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;</div>
-<div class="line"><a name="l00644"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#acdd52cd5981fd1b58ff68ba52a98a13e">  644</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#acdd52cd5981fd1b58ff68ba52a98a13e">SystemAddress::FromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> portDelineator, <span class="keywordtype">int</span> ipVersion)</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;{</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;<span class="preprocessor">#if RAKNET_SUPPORT_IPV6!=1</span></div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;<span class="preprocessor"></span>    (void) ipVersion;</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a34071dfa14d9faa8a7e28e6d1491cb92" title="Old version, for crap platforms that don&#39;t support newer socket functions.">SetBinaryAddress</a>(str,portDelineator);</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span> (str==0)</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    {</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;        memset(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>,0,<span class="keyword">sizeof</span>(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>));</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    }</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="preprocessor">#if RAKNET_SUPPORT_IPV6==1</span></div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> ipPart[INET6_ADDRSTRLEN];</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> ipPart[INET_ADDRSTRLEN];</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> portPart[32];</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="keywordtype">int</span> i=0,j;</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="comment">// TODO - what about 255.255.255.255?</span></div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordflow">if</span> (ipVersion==4 &amp;&amp; strcmp(str, <a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#a0baa661fa33defa017f8500f9f774990">IPV6_LOOPBACK</a>)==0)</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    {</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;        strcpy_s(ipPart,<a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#aaae5981a4adc4dfbd8fc41aa0e7b3813">IPV4_LOOPBACK</a>);</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    }</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ipVersion==6 &amp;&amp; strcmp(str, <a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#aaae5981a4adc4dfbd8fc41aa0e7b3813">IPV4_LOOPBACK</a>)==0)</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    {</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET6;</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;        strcpy_s(ipPart,<a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#a0baa661fa33defa017f8500f9f774990">IPV6_LOOPBACK</a>);</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    }</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a9a4f2de1c5f39778584c24da13b18180">NonNumericHostString</a>(str)==<span class="keyword">false</span>)</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    {</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        <span class="keywordflow">for</span> (; i &lt; <span class="keyword">sizeof</span>(ipPart) &amp;&amp; str[i]!=0 &amp;&amp; str[i]!=portDelineator; i++)</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        {</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="keywordflow">if</span> ((str[i]&lt;<span class="charliteral">&#39;0&#39;</span> || str[i]&gt;<span class="charliteral">&#39;9&#39;</span>) &amp;&amp; (str[i]&lt;<span class="charliteral">&#39;a&#39;</span> || str[i]&gt;<span class="charliteral">&#39;f&#39;</span>) &amp;&amp; (str[i]&lt;<span class="charliteral">&#39;A&#39;</span> || str[i]&gt;<span class="charliteral">&#39;F&#39;</span>) &amp;&amp; str[i]!=<span class="charliteral">&#39;.&#39;</span> &amp;&amp; str[i]!=<span class="charliteral">&#39;:&#39;</span> &amp;&amp; str[i]!=<span class="charliteral">&#39;%&#39;</span> &amp;&amp; str[i]!=<span class="charliteral">&#39;-&#39;</span> &amp;&amp; str[i]!=<span class="charliteral">&#39;/&#39;</span>)</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;            ipPart[i]=str[i];</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;        }</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        ipPart[i]=0;</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    }</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    {</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        strncpy_s(ipPart,str,<span class="keyword">sizeof</span>(ipPart));</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        ipPart[<span class="keyword">sizeof</span>(ipPart)-1]=0;</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    }</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    j=0;</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    <span class="keywordflow">if</span> (str[i]==portDelineator &amp;&amp; portDelineator!=0)</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    {</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        i++;</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        <span class="keywordflow">for</span> (; j &lt; <span class="keyword">sizeof</span>(portPart) &amp;&amp; str[i]!=0; i++, j++)</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;        {</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            portPart[j]=str[i];</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        }</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    }</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    portPart[j]=0;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;</div>
+<div class="line"><a name="l00605"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#acdd52cd5981fd1b58ff68ba52a98a13e">  605</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#acdd52cd5981fd1b58ff68ba52a98a13e">SystemAddress::FromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> portDelineator, <span class="keywordtype">int</span> ipVersion)</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;{</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="preprocessor">#if RAKNET_SUPPORT_IPV6!=1</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="preprocessor"></span>    (void) ipVersion;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a34071dfa14d9faa8a7e28e6d1491cb92" title="Old version, for crap platforms that don&#39;t support newer socket functions.">SetBinaryAddress</a>(str,portDelineator);</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span> (str==0)</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    {</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        memset(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>,0,<span class="keyword">sizeof</span>(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>));</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    }</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;<span class="preprocessor">#if RAKNET_SUPPORT_IPV6==1</span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> ipPart[INET6_ADDRSTRLEN];</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> ipPart[INET_ADDRSTRLEN];</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">char</span> portPart[32];</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    <span class="comment">// TODO - what about 255.255.255.255?</span></div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">if</span> (ipVersion==4 &amp;&amp; strcmp(str, <a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#a0baa661fa33defa017f8500f9f774990">IPV6_LOOPBACK</a>)==0)</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    {</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        strcpy_s(ipPart,<a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#aaae5981a4adc4dfbd8fc41aa0e7b3813">IPV4_LOOPBACK</a>);</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    }</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ipVersion==6 &amp;&amp; strcmp(str, <a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#aaae5981a4adc4dfbd8fc41aa0e7b3813">IPV4_LOOPBACK</a>)==0)</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    {</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET6;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        strcpy_s(ipPart,<a class="code" href="../../d3/d93/_rak_net_types_8cpp.xhtml#a0baa661fa33defa017f8500f9f774990">IPV6_LOOPBACK</a>);</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    }</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    <span class="keywordflow">for</span> (; i &lt; <span class="keyword">sizeof</span>(ipPart) &amp;&amp; str[i] != <span class="charliteral">&#39;\0&#39;</span>; ++i) {</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        <span class="keywordflow">if</span> (str[i] == portDelineator) {</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;            <span class="comment">// #med - missing error checking, if portPart is non-numeric and/or exceeds max allowed port value</span></div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            <span class="keywordtype">int</span> j = 0;</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            ++i; <span class="comment">// skip the delimiter</span></div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <span class="keywordflow">for</span> (; j &lt; <span class="keyword">sizeof</span>(portPart) &amp;&amp; str[i] != <span class="charliteral">&#39;\0&#39;</span>; ++i, ++j) {</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                portPart[j] = str[i];</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            }</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;            portPart[j] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;            i = i - j - 1; <span class="comment">// reset the position to the last position, so the trailing &#39;\0&#39;-terminator is set correctly below</span></div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        }</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        ipPart[i] = str[i];</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    }</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    ipPart[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="comment">// needed for getaddrinfo</span></div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <a class="code" href="../../d4/dcb/class_w_s_a_startup_singleton.xhtml#aec8c21ef29199bcf9be7f3568c8afadf">WSAStartupSingleton::AddRef</a>();</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="comment">// This could be a domain, or a printable address such as &quot;192.0.2.1&quot; or &quot;2001:db8:63b3:1::3490&quot;</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    <span class="comment">// I want to convert it to its binary representation</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    addrinfo hints, *servinfo=0;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    memset(&amp;hints, 0, <span class="keyword">sizeof</span> hints);</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    hints.ai_socktype = SOCK_DGRAM;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    <span class="keywordflow">if</span> (ipVersion==6)</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;        hints.ai_family = AF_INET6;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ipVersion==4)</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;        hints.ai_family = AF_INET;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        hints.ai_family = AF_UNSPEC;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    getaddrinfo(ipPart, <span class="stringliteral">&quot;&quot;</span>, &amp;hints, &amp;servinfo);</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <span class="keywordflow">if</span> (servinfo==0)</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    {</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        <span class="keywordflow">if</span> (ipVersion==6)</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        {</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            ipVersion=4;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            hints.ai_family = AF_UNSPEC;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;            getaddrinfo(ipPart, <span class="stringliteral">&quot;&quot;</span>, &amp;hints, &amp;servinfo);</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            <span class="keywordflow">if</span> (servinfo==0)</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        }</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    }</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(servinfo);</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    </div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> oldPort = <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="preprocessor">#if RAKNET_SUPPORT_IPV6==1</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span> (servinfo-&gt;ai_family == AF_INET)</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    {</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;<span class="comment">//      if (ipVersion==6)</span></div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;<span class="comment">//      {</span></div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;<span class="comment">//          address.addr4.sin_family=AF_INET6;</span></div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;<span class="comment">//          memset(&amp;address.addr6,0,sizeof(address.addr6));</span></div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;<span class="comment">//          memcpy(address.addr6.sin6_addr.s6_addr+12,&amp;((struct sockaddr_in *)servinfo-&gt;ai_addr)-&gt;sin_addr.s_addr,sizeof(unsigned long));</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;<span class="comment">//      }</span></div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;<span class="comment">//      else</span></div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="comment">//      {</span></div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;            <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            memcpy(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4, (<span class="keyword">struct</span> sockaddr_in *)servinfo-&gt;ai_addr,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;<span class="comment">//      }</span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    }</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    {</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET6;</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        memcpy(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr6, (<span class="keyword">struct</span> sockaddr_in6 *)servinfo-&gt;ai_addr,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in6));</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    }</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET4;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    memcpy(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4, (<span class="keyword">struct</span> sockaddr_in *)servinfo-&gt;ai_addr,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    freeaddrinfo(servinfo); <span class="comment">// free the linked list</span></div>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    <span class="comment">// needed for getaddrinfo</span></div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    <a class="code" href="../../d4/dcb/class_w_s_a_startup_singleton.xhtml#aec8c21ef29199bcf9be7f3568c8afadf">WSAStartupSingleton::AddRef</a>();</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    <span class="comment">// This could be a domain, or a printable address such as &quot;192.0.2.1&quot; or &quot;2001:db8:63b3:1::3490&quot;</span></div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    <span class="comment">// I want to convert it to its binary representation</span></div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    addrinfo hints, *servinfo=0;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    memset(&amp;hints, 0, <span class="keyword">sizeof</span> hints);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    hints.ai_socktype = SOCK_DGRAM;</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    <span class="keywordflow">if</span> (ipVersion==6)</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;        hints.ai_family = AF_INET6;</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ipVersion==4)</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;        hints.ai_family = AF_INET;</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        hints.ai_family = AF_UNSPEC;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    getaddrinfo(ipPart, <span class="stringliteral">&quot;&quot;</span>, &amp;hints, &amp;servinfo);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    <span class="keywordflow">if</span> (servinfo==0)</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    {</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        <span class="keywordflow">if</span> (ipVersion==6)</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        {</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            ipVersion=4;</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            hints.ai_family = AF_UNSPEC;</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;            getaddrinfo(ipPart, <span class="stringliteral">&quot;&quot;</span>, &amp;hints, &amp;servinfo);</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            <span class="keywordflow">if</span> (servinfo==0)</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;        }</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;    }</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;    <a class="code" href="../../d8/db0/defines_8h.xhtml#afaa3647d29f5960651eb23fd3d2b5368">RakAssert</a>(servinfo);</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;    </div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> oldPort = <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port;</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="preprocessor">#if RAKNET_SUPPORT_IPV6==1</span></div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">if</span> (servinfo-&gt;ai_family == AF_INET)</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    {</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="comment">//      if (ipVersion==6)</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;<span class="comment">//      {</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="comment">//          address.addr4.sin_family=AF_INET6;</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;<span class="comment">//          memset(&amp;address.addr6,0,sizeof(address.addr6));</span></div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="comment">//          memcpy(address.addr6.sin6_addr.s6_addr+12,&amp;((struct sockaddr_in *)servinfo-&gt;ai_addr)-&gt;sin_addr.s_addr,sizeof(unsigned long));</span></div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="comment">//      }</span></div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="comment">//      else</span></div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="comment">//      {</span></div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET;</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;            memcpy(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4, (<span class="keyword">struct</span> sockaddr_in *)servinfo-&gt;ai_addr,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="comment">//      }</span></div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;    }</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    {</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET6;</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;        memcpy(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr6, (<span class="keyword">struct</span> sockaddr_in6 *)servinfo-&gt;ai_addr,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in6));</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    }</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_family=AF_INET4;</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;    memcpy(&amp;<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4, (<span class="keyword">struct</span> sockaddr_in *)servinfo-&gt;ai_addr,<span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    freeaddrinfo(servinfo); <span class="comment">// free the linked list</span></div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <span class="comment">// needed for getaddrinfo</span></div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <a class="code" href="../../d4/dcb/class_w_s_a_startup_singleton.xhtml#ad33efe86b5377555e3062058b5a4be01">WSAStartupSingleton::Deref</a>();</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="comment">// PORT</span></div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="keywordflow">if</span> (portPart[0])</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;    {</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=htons((<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>) atoi(portPart));</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=ntohs(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port);</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    }</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;    {</div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=oldPort;</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    }</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="preprocessor">#endif // #if RAKNET_SUPPORT_IPV6!=1</span></div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00786"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a8a7cfd12b532b744d42bad6ed6b5f089">  786</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a8a7cfd12b532b744d42bad6ed6b5f089" title="Same as FromString(), but you explicitly set a port at the same time.">SystemAddress::FromStringExplicitPort</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> port, <span class="keywordtype">int</span> ipVersion)</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;{</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="keywordtype">bool</span> b = <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#acdd52cd5981fd1b58ff68ba52a98a13e">FromString</a>(str,(<span class="keywordtype">char</span>) 0,ipVersion);</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    <span class="keywordflow">if</span> (b==<span class="keyword">false</span>)</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    {</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;        *<span class="keyword">this</span>=<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#acea7714c995aae0e1feaf79c9e7f073d" title="Index of an invalid SystemAddress.">UNASSIGNED_SYSTEM_ADDRESS</a>;</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    }</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=htons(port);</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=ntohs(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port);</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;}</div>
-<div class="line"><a name="l00798"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a9750eb4a3b71d71ff00d6ed856a1c5c9">  798</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a9750eb4a3b71d71ff00d6ed856a1c5c9" title="Copy the port from another SystemAddress structure.">SystemAddress::CopyPort</a>( <span class="keyword">const</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml" title="Network address for a system.">SystemAddress</a>&amp; right )</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;{</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=right.<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=right.<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;}</div>
-<div class="line"><a name="l00803"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#adb747346200d7e4248b4ade6f4a5df7a">  803</a></span>&#160;<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#adb747346200d7e4248b4ade6f4a5df7a">RakNetGUID::RakNetGUID</a>()</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;{</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a9d09e90ad5c76fec6bdb98ede4a05cd5">systemIndex</a>=(<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#aaebbed028894590d770e7fcf8518c441">SystemIndex</a>)-1;</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    *<span class="keyword">this</span>=<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a242c86300509ec068e5e2ea534bbba51">UNASSIGNED_RAKNET_GUID</a>;</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;}</div>
-<div class="line"><a name="l00808"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a6ffd87fdc84ae4f43842eed310383f68">  808</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a6ffd87fdc84ae4f43842eed310383f68">RakNetGUID::operator==</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>==right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;}</div>
-<div class="line"><a name="l00812"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a56426e0065a2ac3f0f2f26aa228279c5">  812</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a56426e0065a2ac3f0f2f26aa228279c5">RakNetGUID::operator!=</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>!=right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;}</div>
-<div class="line"><a name="l00816"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a547920662d1988c788b33e0bec0808da">  816</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a547920662d1988c788b33e0bec0808da">RakNetGUID::operator &gt; </a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &gt; right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;}</div>
-<div class="line"><a name="l00820"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a5eaea76f4fa509471f648ad6e24609f2">  820</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a5eaea76f4fa509471f648ad6e24609f2">RakNetGUID::operator &lt; </a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &lt; right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;}</div>
-<div class="line"><a name="l00824"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">  824</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">RakNetGUID::ToString</a>(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> strIndex=0;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">char</span> str[8][64];</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> lastStrIndex=strIndex;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;    strIndex++;</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">ToString</a>(str[lastStrIndex&amp;7], 64);</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">char</span>*) str[lastStrIndex&amp;7];</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;}</div>
-<div class="line"><a name="l00834"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#aa77f22bcdd49698ea6f5d864f30f9283">  834</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">RakNetGUID::ToString</a>(<span class="keywordtype">char</span> *dest)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;    <span class="keywordflow">if</span> (*<span class="keyword">this</span> == <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a242c86300509ec068e5e2ea534bbba51">UNASSIGNED_RAKNET_GUID</a>)</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="preprocessor">#pragma warning(push)</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma warning(disable:4996)</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="preprocessor"></span>        strcpy(dest, <span class="stringliteral">&quot;UNASSIGNED_RAKNET_GUID&quot;</span>);</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="preprocessor">#pragma warning(pop)</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;        <span class="comment">//sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="preprocessor">#pragma warning(push)</span></div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma warning(disable:4996)</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="preprocessor"></span>        sprintf(dest, <span class="stringliteral">&quot;%&quot;</span> <a class="code" href="../../d9/d49/types_8h.xhtml#a123f55e39d7666a55ea7bae5b2beaf7c">PRINTF_64_BIT_MODIFIER</a> <span class="stringliteral">&quot;u&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>);</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="preprocessor">#pragma warning(pop)</span></div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;<span class="preprocessor"></span>        <span class="comment">// sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;}</div>
-<div class="line"><a name="l00849"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#ac81ebf55a3d80f2eeab0b740d947c127">  849</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">RakNetGUID::ToString</a>(<span class="keywordtype">char</span> *dest, <span class="keywordtype">size_t</span> destLength)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    <span class="keywordflow">if</span> (*<span class="keyword">this</span>==<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a242c86300509ec068e5e2ea534bbba51">UNASSIGNED_RAKNET_GUID</a>)</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;        strcpy_s(dest, destLength, <span class="stringliteral">&quot;UNASSIGNED_RAKNET_GUID&quot;</span>);</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;        <span class="comment">//sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;        sprintf_s(dest, destLength, <span class="stringliteral">&quot;%&quot;</span> <a class="code" href="../../d9/d49/types_8h.xhtml#a123f55e39d7666a55ea7bae5b2beaf7c">PRINTF_64_BIT_MODIFIER</a> <span class="stringliteral">&quot;u&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>);</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        <span class="comment">// sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;}</div>
-<div class="line"><a name="l00858"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a7baa2a578f53f69cb6d4775d68511217">  858</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a7baa2a578f53f69cb6d4775d68511217">RakNetGUID::FromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *source)</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;{</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <span class="keywordflow">if</span> (source==0)</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;<span class="preprocessor">#if   defined(WIN32)</span></div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>=_strtoui64(source, NULL, 10);</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;<span class="preprocessor"></span>    <span class="comment">// Changed from g=strtoull(source,0,10); for android</span></div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>=strtoull(source, (<span class="keywordtype">char</span> **)NULL, 10);</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;}</div>
-<div class="line"><a name="l00876"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#aa1e55a3223d0e8fe0cbd17051514b579">  876</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#aa1e55a3223d0e8fe0cbd17051514b579">RakNetGUID::ToUint32</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a> &amp;g )</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;{</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">return</span> ((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>) (g.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &gt;&gt; 32)) ^ ((<span class="keywordtype">unsigned</span> long) (g.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &amp; 0xFFFFFFFF));</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;}</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="comment">// needed for getaddrinfo</span></div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    <a class="code" href="../../d4/dcb/class_w_s_a_startup_singleton.xhtml#ad33efe86b5377555e3062058b5a4be01">WSAStartupSingleton::Deref</a>();</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    <span class="comment">// PORT</span></div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    <span class="keywordflow">if</span> (portPart[0])</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    {</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=htons((<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>) atoi(portPart));</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=ntohs(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port);</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;    }</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;    {</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=oldPort;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;    }</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;<span class="preprocessor">#endif // #if RAKNET_SUPPORT_IPV6!=1</span></div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00727"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a8a7cfd12b532b744d42bad6ed6b5f089">  727</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a8a7cfd12b532b744d42bad6ed6b5f089" title="Same as FromString(), but you explicitly set a port at the same time.">SystemAddress::FromStringExplicitPort</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> port, <span class="keywordtype">int</span> ipVersion)</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;{</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;    <span class="keywordtype">bool</span> b = <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#acdd52cd5981fd1b58ff68ba52a98a13e">FromString</a>(str,(<span class="keywordtype">char</span>) 0,ipVersion);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;    <span class="keywordflow">if</span> (b==<span class="keyword">false</span>)</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;    {</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        *<span class="keyword">this</span>=<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#acea7714c995aae0e1feaf79c9e7f073d" title="Index of an invalid SystemAddress.">UNASSIGNED_SYSTEM_ADDRESS</a>;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    }</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=htons(port);</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=ntohs(<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port);</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;}</div>
+<div class="line"><a name="l00739"></a><span class="lineno"><a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a9750eb4a3b71d71ff00d6ed856a1c5c9">  739</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a9750eb4a3b71d71ff00d6ed856a1c5c9" title="Copy the port from another SystemAddress structure.">SystemAddress::CopyPort</a>( <span class="keyword">const</span> <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml" title="Network address for a system.">SystemAddress</a>&amp; right )</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;{</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port=right.<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#ab9652ec65cfbbf702d84ff340b12da47">address</a>.addr4.sin_port;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    <a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>=right.<a class="code" href="../../d8/dbe/struct_s_l_net_1_1_system_address.xhtml#a2707e26293ed8eabfb8a699ac24ce14e" title="This is not used internally, but holds a copy of the port held in the address union, so for debugging it&#39;s easier to check what port is being held.">debugPort</a>;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;}</div>
+<div class="line"><a name="l00744"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#adb747346200d7e4248b4ade6f4a5df7a">  744</a></span>&#160;<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#adb747346200d7e4248b4ade6f4a5df7a">RakNetGUID::RakNetGUID</a>()</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;{</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a9d09e90ad5c76fec6bdb98ede4a05cd5">systemIndex</a>=(<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#aaebbed028894590d770e7fcf8518c441">SystemIndex</a>)-1;</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    *<span class="keyword">this</span>=<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a242c86300509ec068e5e2ea534bbba51">UNASSIGNED_RAKNET_GUID</a>;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;}</div>
+<div class="line"><a name="l00749"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a6ffd87fdc84ae4f43842eed310383f68">  749</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a6ffd87fdc84ae4f43842eed310383f68">RakNetGUID::operator==</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>==right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;}</div>
+<div class="line"><a name="l00753"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a56426e0065a2ac3f0f2f26aa228279c5">  753</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a56426e0065a2ac3f0f2f26aa228279c5">RakNetGUID::operator!=</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>!=right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;}</div>
+<div class="line"><a name="l00757"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a547920662d1988c788b33e0bec0808da">  757</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a547920662d1988c788b33e0bec0808da">RakNetGUID::operator &gt; </a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &gt; right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;}</div>
+<div class="line"><a name="l00761"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a5eaea76f4fa509471f648ad6e24609f2">  761</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a5eaea76f4fa509471f648ad6e24609f2">RakNetGUID::operator &lt; </a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a>&amp; right )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &lt; right.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>;</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;}</div>
+<div class="line"><a name="l00765"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">  765</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">RakNetGUID::ToString</a>(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> strIndex=0;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">char</span> str[8][64];</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> lastStrIndex=strIndex;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;    strIndex++;</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">ToString</a>(str[lastStrIndex&amp;7], 64);</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">char</span>*) str[lastStrIndex&amp;7];</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;}</div>
+<div class="line"><a name="l00775"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#aa77f22bcdd49698ea6f5d864f30f9283">  775</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">RakNetGUID::ToString</a>(<span class="keywordtype">char</span> *dest)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    <span class="keywordflow">if</span> (*<span class="keyword">this</span> == <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a242c86300509ec068e5e2ea534bbba51">UNASSIGNED_RAKNET_GUID</a>)</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;<span class="preprocessor">#pragma warning(push)</span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma warning(disable:4996)</span></div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="preprocessor"></span>        strcpy(dest, <span class="stringliteral">&quot;UNASSIGNED_RAKNET_GUID&quot;</span>);</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;<span class="preprocessor">#pragma warning(pop)</span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        <span class="comment">//sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="preprocessor">#pragma warning(push)</span></div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma warning(disable:4996)</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;<span class="preprocessor"></span>        sprintf(dest, <span class="stringliteral">&quot;%&quot;</span> <a class="code" href="../../d9/d49/types_8h.xhtml#a123f55e39d7666a55ea7bae5b2beaf7c">PRINTF_64_BIT_MODIFIER</a> <span class="stringliteral">&quot;u&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>);</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;<span class="preprocessor">#pragma warning(pop)</span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;<span class="preprocessor"></span>        <span class="comment">// sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;}</div>
+<div class="line"><a name="l00790"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#ac81ebf55a3d80f2eeab0b740d947c127">  790</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a3338612fd4cc4d26497d7fa27ee19d87">RakNetGUID::ToString</a>(<span class="keywordtype">char</span> *dest, <span class="keywordtype">size_t</span> destLength)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <span class="keywordflow">if</span> (*<span class="keyword">this</span>==<a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a242c86300509ec068e5e2ea534bbba51">UNASSIGNED_RAKNET_GUID</a>)</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        strcpy_s(dest, destLength, <span class="stringliteral">&quot;UNASSIGNED_RAKNET_GUID&quot;</span>);</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        <span class="comment">//sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;        sprintf_s(dest, destLength, <span class="stringliteral">&quot;%&quot;</span> <a class="code" href="../../d9/d49/types_8h.xhtml#a123f55e39d7666a55ea7bae5b2beaf7c">PRINTF_64_BIT_MODIFIER</a> <span class="stringliteral">&quot;u&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>);</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;        <span class="comment">// sprintf_s(dest, destLength, &quot;%u.%u.%u.%u.%u.%u&quot;, g[0], g[1], g[2], g[3], g[4], g[5]);</span></div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;}</div>
+<div class="line"><a name="l00799"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a7baa2a578f53f69cb6d4775d68511217">  799</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a7baa2a578f53f69cb6d4775d68511217">RakNetGUID::FromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *source)</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;{</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordflow">if</span> (source==0)</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;<span class="preprocessor">#if   defined(WIN32)</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>=_strtoui64(source, NULL, 10);</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;<span class="preprocessor"></span>    <span class="comment">// Changed from g=strtoull(source,0,10); for android</span></div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a>=strtoull(source, (<span class="keywordtype">char</span> **)NULL, 10);</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;}</div>
+<div class="line"><a name="l00817"></a><span class="lineno"><a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#aa1e55a3223d0e8fe0cbd17051514b579">  817</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#aa1e55a3223d0e8fe0cbd17051514b579">RakNetGUID::ToUint32</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml">RakNetGUID</a> &amp;g )</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;{</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    <span class="keywordflow">return</span> ((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>) (g.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &gt;&gt; 32)) ^ ((<span class="keywordtype">unsigned</span> long) (g.<a class="code" href="../../dd/d3f/struct_s_l_net_1_1_rak_net_g_u_i_d.xhtml#a4e529b54617b8fdfd21da8aca09f88e2">g</a> &amp; 0xFFFFFFFF));</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_74389ed8173ad57b461b9d623a1f3867.xhtml">Source</a></li><li class="navelem"><a class="el" href="../../dir_d1eb22c2ecfd8b50f59e9cbaf8260105.xhtml">src</a></li><li class="navelem"><a class="el" href="../../d3/d93/_rak_net_types_8cpp.xhtml">RakNetTypes.cpp</a></li>
-    <li class="footer">Generated on Sat May 5 2018 17:33:26 for SLikeNet by
+    <li class="footer">Generated on Wed Aug 14 2019 22:09:47 for SLikeNet by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

@@ -5,7 +5,7 @@
 # Please see licenses/RakNet license.txt for the underlying license and related copyright.
 #
 #
-# Modified work: Copyright (c) 2017, SLikeSoft UG (haftungsbeschränkt)
+# Modified work: Copyright (c) 2017-2019, SLikeSoft UG (haftungsbeschränkt)
 #
 # This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
 # license found in the license.txt file in the root directory of this source tree.
@@ -15,10 +15,10 @@ MACRO(STANDARDSUBPROJECT PROJECTNAME)#Many of the projects just need the cpp fil
 	project(${PROJECTNAME})
 	FILE(GLOB ALL_CPP_SRCS *.cpp)
 	FILE(GLOB ALL_HEADER_SRCS *.h)
-	include_directories(${RAKNETHEADERFILES} ./) 
+	include_directories(${SLIKENET_HEADER_FILES} ./) 
 	FIXCOMPILEOPTIONS()
 	add_executable(${PROJECTNAME} ${ALL_CPP_SRCS} ${ALL_HEADER_SRCS})
-	target_link_libraries(${PROJECTNAME} ${RAKNET_COMMON_LIBS})
+	target_link_libraries(${PROJECTNAME} ${SLIKENET_COMMON_LIBS})
 	set_target_properties(${PROJECTNAME} PROPERTIES PROJECT_GROUP Samples)
 ENDMACRO(STANDARDSUBPROJECT)
 
@@ -27,9 +27,9 @@ MACRO(STANDARDSUBPROJECTWITHOPTIONS PROJECTNAME EXTRAINCLUDES EXTRASOURCES EXTRA
 	FILE(GLOB ALL_CPP_SRCS *.cpp)
 	FILE(GLOB ALL_HEADER_SRCS *.h)
 	FIXCOMPILEOPTIONS()
-	include_directories(${RAKNETHEADERFILES} ./ ${EXTRAINCLUDES}) 
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${EXTRAINCLUDES}) 
 	add_executable(${PROJECTNAME} ${ALL_CPP_SRCS} ${ALL_HEADER_SRCS} ${EXTRASOURCES})
-	target_link_libraries(${PROJECTNAME} ${RAKNET_COMMON_LIBS} ${EXTRALIBS})
+	target_link_libraries(${PROJECTNAME} ${SLIKENET_COMMON_LIBS} ${EXTRALIBS})
 	set_target_properties(${PROJECTNAME} PROPERTIES PROJECT_GROUP Samples)
 ENDMACRO(STANDARDSUBPROJECTWITHOPTIONS)
 
@@ -38,9 +38,9 @@ MACRO(STANDARDSUBPROJECTWITHOPTIONSSET PROJECTNAME)#Same as STANDARDSUBPROJECT b
 	FILE(GLOB ALL_CPP_SRCS *.cpp)
 	FILE(GLOB ALL_HEADER_SRCS *.h)
 	FIXCOMPILEOPTIONS()
-	include_directories(${RAKNETHEADERFILES} ./ ${EXTRAINCLUDES}) 
+	include_directories(${SLIKENET_HEADER_FILES} ./ ${EXTRAINCLUDES}) 
 	add_executable(${PROJECTNAME} ${ALL_CPP_SRCS} ${ALL_HEADER_SRCS} ${EXTRASOURCES})
-	target_link_libraries(${PROJECTNAME} ${RAKNET_COMMON_LIBS} ${EXTRALIBS})
+	target_link_libraries(${PROJECTNAME} ${SLIKENET_COMMON_LIBS} ${EXTRALIBS})
 	set_target_properties(${PROJECTNAME} PROPERTIES PROJECT_GROUP Samples)
 ENDMACRO(STANDARDSUBPROJECTWITHOPTIONSSET) 
 
@@ -48,10 +48,10 @@ MACRO(STANDARDCSUBPROJECT PROJECTNAME)#Same as STANDARDSUBPROJECT but for C file
 	project(${PROJECTNAME})
 	FILE(GLOB ALL_C_SRCS *.c)
 	FILE(GLOB ALL_HEADER_SRCS *.h)
-	include_directories(${RAKNETHEADERFILES} ./) 
+	include_directories(${SLIKENET_HEADER_FILES} ./) 
 	FIXCOMPILEOPTIONS()
 	add_executable(${PROJECTNAME} ${ALL_C_SRCS} ${ALL_HEADER_SRCS})
-	target_link_libraries(${PROJECTNAME} ${RAKNET_COMMON_LIBS})
+	target_link_libraries(${PROJECTNAME} ${SLIKENET_COMMON_LIBS})
 	set_target_properties(${PROJECTNAME} PROPERTIES PROJECT_GROUP Samples)
 ENDMACRO(STANDARDCSUBPROJECT)
 
@@ -107,4 +107,4 @@ MACRO(FIXLINKOPTIONS)#Fix added link options that may cause problems
 	ENDIF(WIN32 AND NOT UNIX)
 ENDMACRO(FIXLINKOPTIONS)
 
-include(${RakNet_SOURCE_DIR}/CmakeIncludes/FindMacros.txt)#The macros for setting variables and performing finds
+include(${SLikeNet_SOURCE_DIR}/CmakeIncludes/FindMacros.txt)#The macros for setting variables and performing finds

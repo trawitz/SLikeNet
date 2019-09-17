@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">SLikeNet
-   &#160;<span id="projectnumber">0.1.2</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('d7/dc3/_bit_stream_8h_source.xhtml','.
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *  of patent rights can be found in the RakNet Patents.txt file in the same directory.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Modified work: Copyright (c) 2016-2018, SLikeSoft UG (haftungsbeschränkt)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *  Modified work: Copyright (c) 2016-2019, SLikeSoft UG (haftungsbeschränkt)</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *  license found in the license.txt file in the root directory of this source tree.</span></div>
@@ -344,7 +344,7 @@ $(document).ready(function(){initNavTree('d7/dc3/_bit_stream_8h_source.xhtml','.
 <div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;</div>
 <div class="line"><a name="l00531"></a><span class="lineno"><a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a8715199c63a057205ef5bd27f6b068d4">  531</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a8715199c63a057205ef5bd27f6b068d4" title="Sets the read bit index.">SetReadOffset</a>( <span class="keyword">const</span> <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a227d2a5f9683a34d9d1e70772fd556ec">BitSize_t</a> newReadOffset ) {readOffset=newReadOffset;}</div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;</div>
-<div class="line"><a name="l00534"></a><span class="lineno"><a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a89838c39f170290405c95d78b0553e51">  534</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a227d2a5f9683a34d9d1e70772fd556ec">BitSize_t</a> <a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a89838c39f170290405c95d78b0553e51" title="Returns the number of bits left in the stream that haven&#39;t been read.">GetNumberOfUnreadBits</a>( <span class="keywordtype">void</span> )<span class="keyword"> const </span>{<span class="keywordflow">return</span> numberOfBitsUsed - readOffset;}</div>
+<div class="line"><a name="l00534"></a><span class="lineno"><a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a89838c39f170290405c95d78b0553e51">  534</a></span>&#160;        <span class="keyword">inline</span> <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a227d2a5f9683a34d9d1e70772fd556ec">BitSize_t</a> <a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a89838c39f170290405c95d78b0553e51" title="Returns the number of bits left in the stream that haven&#39;t been read.">GetNumberOfUnreadBits</a>( <span class="keywordtype">void</span> )<span class="keyword"> const </span>{ <span class="keywordflow">return</span> readOffset &gt; numberOfBitsUsed ? 0 : numberOfBitsUsed - readOffset; }</div>
 <div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        <a class="code" href="../../dd/d30/namespace_s_l_net.xhtml#a227d2a5f9683a34d9d1e70772fd556ec">BitSize_t</a> CopyData( <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>** _data ) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;</div>
@@ -989,7 +989,7 @@ $(document).ready(function(){initNavTree('d7/dc3/_bit_stream_8h_source.xhtml','.
 <div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;    <span class="keyword">template</span> &lt;&gt;</div>
 <div class="line"><a name="l01308"></a><span class="lineno"><a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a3be8fefec92fbe9157069d8be6123a59"> 1308</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a59f38126d8d19bfd264a2e2cace7d1db" title="Read any integral type from a bitstream.">BitStream::Read</a>(<span class="keywordtype">bool</span> &amp;outTemplateVar)</div>
 <div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;    {</div>
-<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;        <span class="keywordflow">if</span> ( readOffset + 1 &gt; numberOfBitsUsed )</div>
+<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a89838c39f170290405c95d78b0553e51" title="Returns the number of bits left in the stream that haven&#39;t been read.">GetNumberOfUnreadBits</a>() == 0)</div>
 <div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;</div>
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;        <span class="keywordflow">if</span> ( data[ readOffset &gt;&gt; 3 ] &amp; ( 0x80 &gt;&gt; ( readOffset &amp; 7 ) ) )   <span class="comment">// Is it faster to just write it out here?</span></div>
@@ -1037,7 +1037,7 @@ $(document).ready(function(){initNavTree('d7/dc3/_bit_stream_8h_source.xhtml','.
 <div class="line"><a name="l01357"></a><span class="lineno"><a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#abbedcfef322eae8accfafff707a7395f"> 1357</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a59f38126d8d19bfd264a2e2cace7d1db" title="Read any integral type from a bitstream.">BitStream::Read</a>(<a class="code" href="../../d9/d6a/struct_s_l_net_1_1uint24__t.xhtml">uint24_t</a> &amp;outTemplateVar)</div>
 <div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    {</div>
 <div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;        <a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#af64b3663a865840e013f5aef490d891e" title="Align the next write and/or read to a byte boundary.">AlignReadToByteBoundary</a>();</div>
-<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;        <span class="keywordflow">if</span> ( readOffset + 3*8 &gt; numberOfBitsUsed )</div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#a89838c39f170290405c95d78b0553e51" title="Returns the number of bits left in the stream that haven&#39;t been read.">GetNumberOfUnreadBits</a>() &lt; 3*8)</div>
 <div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;</div>
 <div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../df/d75/class_s_l_net_1_1_bit_stream.xhtml#af85ce50757f06bfbd6fc4a88dd24cdae">IsBigEndian</a>()==<span class="keyword">false</span>)</div>
@@ -1542,7 +1542,7 @@ $(document).ready(function(){initNavTree('d7/dc3/_bit_stream_8h_source.xhtml','.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_74389ed8173ad57b461b9d623a1f3867.xhtml">Source</a></li><li class="navelem"><a class="el" href="../../dir_bbb90e3ef9167a594ae33323139a2595.xhtml">include</a></li><li class="navelem"><a class="el" href="../../dir_88467e66686deb9d3756fe4fc298e321.xhtml">slikenet</a></li><li class="navelem"><a class="el" href="../../d7/dc3/_bit_stream_8h.xhtml">BitStream.h</a></li>
-    <li class="footer">Generated on Sat May 5 2018 17:33:24 for SLikeNet by
+    <li class="footer">Generated on Wed Aug 14 2019 22:09:46 for SLikeNet by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.2 </li>
   </ul>

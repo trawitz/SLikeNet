@@ -205,6 +205,7 @@ var NAVTREEINDEX1 =
 "d0/dcf/_single_producer_consumer_8h.xhtml#a8fae0ac5ca81babf9c401d698fb1dc8e":[4,0,0,0,0,115,1],
 "d0/dcf/_single_producer_consumer_8h_source.xhtml":[4,0,0,0,0,115],
 "d0/dea/_rak_w_string_8cpp.xhtml":[4,0,0,1,78],
+"d0/dea/_rak_w_string_8cpp.xhtml#a0026cc0d11aa26911404550ae65630fe":[4,0,0,1,78,1],
 "d0/dea/_rak_w_string_8cpp.xhtml#a34937c47db27f8429e17f0f218052b0f":[4,0,0,1,78,0],
 "d0/dea/_rak_w_string_8cpp_source.xhtml":[4,0,0,1,78],
 "d0/dfb/_c_c_rak_net_sliding_window_8h.xhtml":[4,0,0,0,0,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "d1/d4f/class_s_l_net_1_1_r_n_s2___berkley.xhtml#a1442a12260bace9e7fe7dc3dd8363bd8":[3,0,1,58,20],
 "d1/d4f/class_s_l_net_1_1_r_n_s2___berkley.xhtml#a228ffbc707aafa8a6fd56c25a910d2d1":[3,0,1,58,16],
 "d1/d4f/class_s_l_net_1_1_r_n_s2___berkley.xhtml#a43d7b146b0acd794206e4ad8884c1f7f":[3,0,1,58,5],
-"d1/d4f/class_s_l_net_1_1_r_n_s2___berkley.xhtml#a4a826e7d7f3ae0903ec4319ea9a36a7a":[3,0,1,58,12],
-"d1/d4f/class_s_l_net_1_1_r_n_s2___berkley.xhtml#a5ddfe68a1ec36c78afa667a64f093658":[3,0,1,58,9]
+"d1/d4f/class_s_l_net_1_1_r_n_s2___berkley.xhtml#a4a826e7d7f3ae0903ec4319ea9a36a7a":[3,0,1,58,12]
 };

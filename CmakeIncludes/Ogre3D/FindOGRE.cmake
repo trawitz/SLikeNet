@@ -1,7 +1,17 @@
-﻿#This has been modified fron the original
+﻿# This file was taken from RakNet 4.082.
+# Please see licenses/RakNet license.txt for the underlying license and related copyright.
+#
+#
+# Modified work: Copyright (c) 2019, SLikeSoft UG (haftungsbeschränkt)
+#
+# This source code was modified by SLikeSoft. Modifications are licensed under the MIT-style
+# license found in the license.txt file in the root directory of this source tree.
+#
 
-include(${RakNet_SOURCE_DIR}/CmakeIncludes/Ogre3D/PreprocessorUtils.cmake)
-include(${RakNet_SOURCE_DIR}/CmakeIncludes/Ogre3D/FindPkgMacros.cmake)
+#This has been modified fron the original
+
+include(${SLikeNet_SOURCE_DIR}/CmakeIncludes/Ogre3D/PreprocessorUtils.cmake)
+include(${SLikeNet_SOURCE_DIR}/CmakeIncludes/Ogre3D/FindPkgMacros.cmake)
 
 #-------------------------------------------------------------------
 # This file is part of the CMake build system for OGRE
