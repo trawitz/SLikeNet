@@ -110,9 +110,9 @@ Core:
   ReplicaManager3:
     * fixed incorrect delete in ReplicaManager3::Clear() when using a custom allocator (#249)
   SystemAddress:
-    * fixed multiple issues related to port resolution in hostnames upon construction or through SystemAddress::FromString() (#263 - SLNET_46)
+    * fixed multiple issues related to port resolution in hostnames upon construction or through SystemAddress::FromString() (#263 - SLNET_46/SLNET_51)
     * fixed cases where using a hostname to create a system address, calling SystemAddress::FromString(), or SystemAddress::SetBinaryAddress() can fail in IPv4 mode (#264)
-    * fixed localhost not being resolved properly, if set to something other than 127.0.0.1 on the current system (#265)
+    * fixed localhost not being resolved properly, if set to something other than 127.0.0.1 on the current system (#265 - SLNET_51)
   TeamManager:
     * fixed incorrect delete in TeamManager::Clear() when using a custom allocator (#249)
 Building:
