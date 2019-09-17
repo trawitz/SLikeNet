@@ -13,7 +13,9 @@
  *  license found in the license.txt file in the root directory of this source tree.
  */
 
-#define NOMINMAX
+#ifndef NOMINMAX
+	#define NOMINMAX
+#endif
 
 #if   defined (WINDOWS_STORE_RT)
 #include <windows.h>
