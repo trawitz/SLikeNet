@@ -493,7 +493,7 @@ struct BoostRPCInvoker_ThisPtr
 	// add an argument to a Fusion cons-list for each parameter type
 	template<typename Args>
 	static inline
-		InvokeResultCodes apply(Function func, InvokeArgs &functionArgs, Args const &args)
+		InvokeResultCodes apply(Function func, InvokeArgs functionArgs, Args const &args)
 	{
 		typedef typename boost::mpl::deref<From>::type arg_type;
 		typedef typename boost::mpl::next<From>::type next_iter_type;
